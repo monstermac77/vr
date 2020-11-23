@@ -7,6 +7,7 @@ echo Disabling Reverb G2 headset
 "C:\Users\Joe Puccio\Documents\Misc\vr\USBDeview.exe" /RunAsAdmin /disable "HoloLens Sensors"
 echo Killing WMR application
 taskkill /f /im "MixedRealityPortal.exe"
+echo Killing Steam VR application
 taskkill /IM vrwebhelper.exe /F
 taskkill /IM vrserver.exe /F
 taskkill /IM vrmonitor.exe /F
