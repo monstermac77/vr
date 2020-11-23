@@ -1,6 +1,7 @@
 @echo off
 title Start VR programs
 echo Starting lighthouses...
+;; remember to edit the paths below, unless you also happen to be named "Joe Puccio". Also be sure to change the MAC addresses at the end of this line (run `lighthouse-v2-manager.exe discover`)
 "C:\Users\Joe Puccio\Documents\Misc\vr\lighthouses\source\lighthouse-v2-manager.exe" on FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 echo Enabling Reverb G2 headset...
 "C:\Users\Joe Puccio\Documents\Misc\vr\USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
