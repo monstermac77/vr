@@ -10,7 +10,7 @@ Since we're going for the best here, we're going to need the best graphics card.
 To figure out what the top of the line is at this moment, look at benchmarks from [Gamers Nexus](https://www.youtube.com/user/GamersNexus). They are the most scientific and methodical players in town.
 
 ### Everything else
-Your processor, motherboard, RAM, storage, power supply, case, and cooling system should simply be sufficient enough not to bottleneck your graphics card (you can use [this tool](https://pc-builds.com/calculator/)). This goes for VR gaming just like PC gaming in general. I opt for whatever processor currently has the highest single threaded clock speed (again, check Gamers Nexus), whatever motherboard is reasonably priced and won't hold me back when overclocking, etc. I'll post a separate guide later on how I choose my components.
+Your processor, motherboard, RAM, storage, power supply, case, and cooling system should simply be sufficient enough not to bottleneck your graphics card (you can use [this tool](https://pc-builds.com/calculator/) for checking your CPU). This goes for VR gaming just like PC gaming in general. I opt for whatever processor currently has the highest single threaded clock speed (again, check Gamers Nexus), whatever motherboard is reasonably priced and won't hold me back when overclocking, etc. I'll post a separate guide later on how I choose my components.
 
 My first build, from April 2019, can be found [here](https://pcpartpicker.com/user/monstermac77/saved/), if you're interested. 
 
@@ -18,11 +18,19 @@ My first build, from April 2019, can be found [here](https://pcpartpicker.com/us
 
 For the best VR experience, you have to use a headset that is tethered to your powerful gaming PC (PCVR). The standalone VR headsets do have some marked advantages over PCVR. But because they will always have the limitation of needing to mount to your head without breaking your neck, they will never be able to match the fidelity of a dedidcated 30 pound computer sitting on your floor.
 
-Since the best headset in a given year might not have the best controllers, getting the best experience may not mean just buying whatever one company (usually Valve) is selling. This is where [Mixed VR](https://www.reddit.com/r/MixedVR/) comes into play, since you may have to configure your headset (e.g. Reverb G2 from HP) which relies on one set of tracking hardware/software (visible light/Windows Mixed Reality) to work with your controllers (e.g Knuckles Controllers from Valve). that use another set of tracking hardware/software (infrared light/SteamVR).
+Since the best headset in a given year might not have the best controllers, getting the best experience may not mean just buying whatever one company (usually Valve) is selling. This is where [Mixed VR](https://www.reddit.com/r/MixedVR/) comes into play, since you may have to configure your headset from one company (e.g. Reverb G2 from HP) which relies on one set of tracking hardware/software (visible light/Windows Mixed Reality) to work with your controllers from another company (e.g Knuckles Controllers from Valve) that use another set of tracking hardware/software (infrared light/SteamVR).
 
 ### Headset
 
-When choosing a headset (HMD), I optimize for photorealism. When you're looking at a picture. This incorporates  
+When choosing a headset (HMD), I optimize for photorealism, then immersion. 
+
+#### Photorealism
+
+Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. 
+
+#### Immersion
+
+This almost directly corresponds to Field of View (FoV).
 
 ### Controllers
 I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
