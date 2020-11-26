@@ -1,4 +1,4 @@
-# My Perfectionist VR Setup
+# A Perfectionist's VR Setup
 I'm a particular person in reality, so it stands to reason I would be about VR as well. This is a comprehensive guide to my VR setup, including some descriptions of how things work and why some things don't.
 
 ## PC Hardware 
@@ -52,7 +52,15 @@ Tragically, there's no objective measure for photorealism. It's a combination of
 This almost directly corresponds to the HMD's Field of View (FoV). Humans have slightly over 210 degrees of horizontal FoV and 150 degrees of vertical FoV, although this may vary based on each person's IPD. This is a much easier bar to meet than photorealism: an HMD that is able to match our FoV will have achieved full visual immersion.
 
 ### Controllers
+There are a few criteria that can be used when judging controllers: 
+* Build quality
+ * It's unpleasant to hold creaky or noticeably cheap plastic in your hand. Buttons should be satisfying to actuate.
+* Intuitiveness
+ * When in-game, there should not be ambiguity as to what button or grip needs to be used. Buttons should be within reach for most hand sizes.
+* Haptics
+ * When interacting with objects in VR, it's critical to receieve tactile feedback to permit immersion into the environment. Controllers do this via small motors that vibrate to provide feedback. These haptics should feel commensurate with the action performed, not overly muted or buzzy.
 
+As of this writing, the Valve Knuckles controllers are without equal on nearly all of these fronts, and offer even more benefits (individual finger tracking, recharging over USB-C, allowing an open-hand without dropping the controllers). In-game when gripping objects, I've struggled with both WMR and Oculus controllers as my reflex is split between clicking the grib button or the trigger button. 
 
 ### Tracking 
 I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
