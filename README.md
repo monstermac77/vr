@@ -90,7 +90,11 @@ I have found Valve's SteamVR to be the perfect balance of simplicity, customizea
 
 ## Matching physical space
 
+I find it helpful to match my virtual space with my physical space in SteamVR Home. This way, when I want to sit on my couch in physical space, I can simply find my virtual couch and walk toward it. 
 
+The first thing you should do is setup your chaperone bounds to exactly match your physical space. Chaperone bounds are essentially restrictions you self-impose in VR space to prevent you from running into physical walls when in VR. Use SteamVR's room setup to start, but for fine tune adjustments, you'll need to use [Chaperone Tweak](https://github.com/Xavr0k/ChaperoneTweak). 
+
+The next thing you'll want to do is use SteamVR Home's menus to create your physical space in VR. I used the white side of refridgerators stacked high to create the white walls of my room. As you're building, you should work at the very edge of your chaperone bounds to determine exactly where the walls and other items should go. The rest of the setup was straight forward as SteamVR Home had items for them (TV, computer, desk, etc.). You should save very often, and backup your progress regularly as well. The SteamVR Home files are currently stored here ``.
 
 ## Game cross compatability
 
