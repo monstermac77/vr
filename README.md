@@ -12,7 +12,7 @@ To figure out what the top of the line is at this moment, look at benchmarks fro
 ### Everything else
 Your processor, motherboard, RAM, storage, power supply, case, and cooling system should simply be sufficient enough not to bottleneck your graphics card (you can use [this tool](https://pc-builds.com/calculator/) for checking your CPU). This goes for VR gaming just like PC gaming in general. I opt for whatever processor currently has the highest single threaded clock speed (again, check Gamers Nexus), whatever motherboard is reasonably priced and won't hold me back when overclocking, etc. I'll post a separate guide later on how I choose my components.
 
-My first build, from April 2019, can be found [here](https://pcpartpicker.com/user/monstermac77/saved/), if you're interested. 
+My first build from April 2019 can be found [here](https://pcpartpicker.com/user/monstermac77/saved/), if you're interested. 
 
 ## VR Hardware
 
@@ -22,11 +22,14 @@ Since the best headset in a given year might not have the best controllers, gett
 
 ### Headset
 
-When choosing a headset (HMD), I optimize for photorealism, then immersion. 
+When choosing a headset (HMD), I optimize for photorealism, then immersion. Defining these terms is easiest by example. 
+
+* Photorealism: suppose you could alter any HMD to alternate between displaying what's on the panels behind the lenses to a user, and simply showing the user what's in front of them in reality (matching any loss in peripheral vision). Then, say every 30 seconds, you were ask someone wearing this display to close and re-open their eyes and look around without moving their head. If their guess rate for whether they were seeing reality, or the virtual reality that was displayed by capturing their environment in 3D and displaying it on the HMD's screen, converges to 50% as the samples tend to infinity, then photorealism has been achieved.
+* Immersion: 
 
 #### Photorealism
 
-Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. 
+Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. A primary component is angular pixel density. 
 
 #### Immersion
 
