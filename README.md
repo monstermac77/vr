@@ -31,14 +31,15 @@ It's important to note that there are ergonomic factors that affect a given HMDs
 
 #### Photorealism
 
-Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. The best one can do is read reviews by trusted reviewers of VR, but given that ergonomics play a role there's no substitue for trying the HMDs first-hand. Here are some of the most notable factors:
+Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. The best one can do is read reviews by trusted reviewers of VR, but given that ergonomics play a non-trivial role there's no substitue for trying the HMDs first-hand. Here are some of the most notable factors:
 * Angular pixel density (or pixels per degree)
-  * An estimate for this value can be determined by both the resolution of the display(s) inside the HMD as well as the FoV afforded by the optics, as described [here](https://www.roadtovr.com/understanding-pixel-density-retinal-resolution-and-why-its-important-for-vr-and-ar-headsets/). It's important to note, however, that because optical systems vary from HMD to HMD, it's not technically accurate to compare based on this metric. For instance, utilization of the panel can vary across HMDs. That is, the panel may be 2160p (horizontal lines), but only light from 1960p is making it into the optics.
+  * An estimate for this value can be determined by both the resolution of the display(s) inside the HMD as well as the FoV afforded by the optics, as described [here](https://www.roadtovr.com/understanding-pixel-density-retinal-resolution-and-why-its-important-for-vr-and-ar-headsets/). It's important to note, however, that because optical systems vary from HMD to HMD, it's not technically accurate to compare based on this metric. For instance, utilization of the panel can vary across HMDs. That is, the panel may be 2160p (horizontal lines), but only light from 1960p atually makes it into the optics.
 * Optics
- * This is even harder to quantify and compare across HMDs, but issues with optics quality can result in artifacts that detract from photorealism, such as chromatic abberation. TODO: elaborate a lot here, discuss fresnel lenses, etc.
+ * This is even harder to quantify and compare across HMDs, but issues with optics quality can result in artifacts that detract from photorealism, such as chromatic abberation, god rays, TODO, etc. TODO: elaborate a lot here and do more research, discuss fresnel lenses, etc.
 * Contrast ratio 
-  * This refers essentially to the range of the display. Usually the display type is a driving factor here (LCD, OLED, etc.), but other things can play a role 
+  * This refers essentially to the brightness range of the display. Often the display type is a driving factor here (LCD, OLED, etc.). An LCD display requires a backlight that is always emitting light. This reduces the peak low brightness from a pitch black to a blackish-gray, because the LCD filters aren't able to fully block out the white light that is shining behind them. Reducing the brightness of the LCD backlight helps achieve . This trade-off can be mitigated with what are called "local dimming zones", where the backlight is broken into . but other factors can play a role. Much more about how displays work and may impact photorealism is can be found from the most thorough TV reviewer, [HDTVTest](https://www.youtube.com/c/hdtvtest/videos).
 * Color gamut
+* Pixel pitch
 * Refresh rate
 * Display persistence
 
