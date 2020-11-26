@@ -94,9 +94,11 @@ I find it helpful to match my virtual space with my physical space in SteamVR Ho
 
 The first thing you should do is setup your chaperone bounds to exactly match your physical space. Chaperone bounds are essentially restrictions you self-impose in VR space to prevent you from running into physical walls when in VR. Use SteamVR's room setup to start, but for fine tune adjustments, you'll need to use [Chaperone Tweak](https://github.com/Xavr0k/ChaperoneTweak). 
 
-The next thing you'll want to do is use SteamVR Home's menus to create your physical space in VR. I used the white side of refridgerators stacked high to create the white walls of my room. As you're building, you should work at the very edge of your chaperone bounds to determine exactly where the walls and other items should go. The rest of the setup was straight forward as SteamVR Home had items for them (TV, computer, desk, etc.). You should save very often, and backup your progress regularly as well. The SteamVR Home files are currently stored here `C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\SAVE`.
+The next thing you'll want to do is use SteamVR Home's menus to create your physical space in VR. I used the white side of refridgerators stacked high to create the white walls of my room. As you're building, you should work at the very edge of your chaperone bounds to determine exactly where the walls and other items should go. The rest of the setup was straight forward as SteamVR Home had items for them (TV, computer, desk, etc.). You should save very often, and backup your progress regularly as well. As of this writing, the SteamVR Home files are stored in this directory `C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\SAVE`. You can simply copy the "SAVE" directory somewhere safe and restore things by copying it back to the original directory.
 
-## Game cross compatability
+## Game cross-compatability
+
+As mentioned above, all games are currently built on OpenVR. This means that, although some games may claim to be exclusive to a certain platform (like Oculus), they are technically portable to other HMDs. Sometimes this works without extra configuration, but as of this writing for Oculus-exclusive games you'll need software called [Revive](https://github.com/LibreVR/Revive) to accomplish it.
 
 ## Perfecting Icons/Artwork for non-Steam games in SteamVR
 
