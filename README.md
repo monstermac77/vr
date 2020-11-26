@@ -22,10 +22,10 @@ Since the best headset in a given year might not have the best controllers, gett
 
 ### Headset
 
-When choosing a headset, or head-mounted display (HMD), I optimize for photorealism, then immersion. Defining these terms is easiest by example. 
+When choosing a headset, or head-mounted display (HMD), I optimize for photorealism, then visual immersion. Defining these terms is easiest by example. 
 
-* Photorealism: suppose you could alter any HMD to alternate between displaying what's on the panels behind the lenses to a user, and simply showing the user what's in front of them in reality (matching any losses in peripheral vision). Then, say every 30 seconds, you alternated at random the HMD to display reality or virtual reality and asked the person to use their eyes and look around without moving their head and guess what they were seeing. If their guess rate for whether they were seeing reality, or the virtual reality that was displayed by capturing their environment in 3D and displaying it on the HMD's screen, converges to 50% as the samples tend to infinity, then photorealism has been achieved.
-* Immersion: 
+* Photorealism: suppose you could alter any HMD to alternate between displaying what's on the panels behind the lenses to a user, and simply showing the user what's in front of them in reality (matching any losses in peripheral vision). Also suppose you could perfectly capture a 3D space and all lighting in a computer model in real-time. Then, say every 30 seconds, you alternated at random the HMD to display reality or this 3D space and asked the person to use their eyes and look around and guess whether they are seeing reality or a virtual reality. If their correct guess rate converges to 50% as the samples tend to infinity, then full photorealism has been achieved.
+* Visual Immersion: this is effectively Field of View (FoV), which is how much of your peripheral vision (both vertical and horizontal) is obscured by the HMD. Humans have slightly over 210 degrees of horizontal field of view and 150 degrees of vertical field of view. A headset has achieved full visual immersion when a user cannot detect any obstruction to their view . A test similar to the one described above can also be used.
 
 #### Photorealism
 
