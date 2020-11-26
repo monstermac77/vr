@@ -18,7 +18,7 @@ My first build, from April 2019, can be found [here](https://pcpartpicker.com/us
 
 For the best VR experience, you have to use a headset that is tethered to your powerful gaming PC (PCVR). While the standalone VR headsets have some marked advantages over PCVR, because they will always have the limitation of needing to mount to your head without breaking your neck, they will never be able to match the fidelity of a dedidcated 30 pound computer sitting on your floor.
 
-Since the best headset in a given year might not have the best controllers, getting the best experience may not mean just buying whatever one company (usually Valve) is selling. This is where [Mixed VR](https://www.reddit.com/r/MixedVR/) comes into play, since you may have to configure your headset from one company (e.g. Reverb G2) to work with your controllers and tracking system from another company (Valve Knuckles Controllers).
+Since the best headset in a given year might not have the best controllers, getting the best experience may not mean just buying whatever one company (usually Valve) is selling. This is where [Mixed VR](https://www.reddit.com/r/MixedVR/) comes into play, since you may have to configure your headset which relies on one set of tracking hardware/sofware (e.g. Reverb G2 from HP) to work with your controllers that use another set of tracking hardware/software (e.g Knuckles Controllers from Valve).
 
 ### Headset
 
