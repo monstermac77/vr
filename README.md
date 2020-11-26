@@ -84,11 +84,13 @@ Although different hardware may use the same medium, their application of that m
 There is plenty of [good discussion](https://venturebeat.com/2019/05/05/how-virtual-reality-positional-tracking-works/) comparing tracking mechanisms, but I do want to highlight one very troubling downside to a visible light approach to track both the HMD and controllers in the same setup: since too much environmental light means the HMD will not be able to accurately track the position of the controllers, but too little environmental light means that the HMD will not be able to identify landmarks in physical space, environmental lighting must be controllable in both directions to achieve acceptable tracking; this is a downside that no other method experiences.
 
 ## Platform choice
-Like much of the PC gaming industry, each hardware manufacturer forces use of their own software for setting up, configuring, and using their HMDs (e.g. Windows Mixed Reality Portal, SteamVR, etc). This is unfortunate. However, Valve was kind enough to establish and push the industry to adopt their open SDK, called [OpenVR](https://github.com/ValveSoftware/openvr). As of this writing, nearly every VR software is built on top of this SDK. This allows for the portability we enjoy today, such as being able to launch an Oculus exclusive game from SteamVR, or play a game made for Windows Mixed Reality on an HMD created by Valve. 
+Like much of the PC gaming industry, each hardware manufacturer forces use of their own software (e.g. Windows Mixed Reality Portal, SteamVR, etc) for setting up, configuring, and using their HMDs. This is unfortunate. However, Valve was kind enough to establish and push the industry to adopt their open SDK, called [OpenVR](https://github.com/ValveSoftware/openvr). As of this writing, nearly every VR software is built on top of this SDK. This allows for the portability we enjoy today, such as being able to launch an Oculus exclusive game from SteamVR, or play a game made for Windows Mixed Reality on an HMD created by Valve. 
 
-I have found Valve's SteamVR to be the perfect balance of simplicity, customizeability, and ongoing support to accomodate my VR setup.
+I have found Valve's SteamVR to be the perfect balance of simplicity, customizeability, community adoption, and ongoing support to accomodate my VR setup.
 
 ## Matching physical space
+
+
 
 ## Game cross compatability
 
