@@ -2,7 +2,6 @@
 I'm a particular person in reality, so it stands to reason I would be about VR as well. This is a comprehensive guide to my VR setup, including some descriptions of how things work and why some things don't.
 
 ## Table of Contents
-=================
 
 * [PC Hardware](#pc-hardware)
    * [Graphics Card](#graphics-card)
