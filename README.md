@@ -10,7 +10,7 @@ Since we're going for the best here, we're going to need the best graphics card.
 To figure out what the top of the line is at this moment, look at benchmarks from [Gamers Nexus](https://www.youtube.com/user/GamersNexus). They are the most scientific and methodical players in town.
 
 ### Everything else
-Your processor, motherboard, RAM, storage, power supply, case, and cooling system should simply be sufficient enough not to bottleneck your graphics card (you can use [this tool](https://pc-builds.com/calculator/) for checking if your CPU causes a bottleneck). This goes for VR gaming just like PC gaming in general. I opt for whatever processor currently has the highest single threaded performance (again, check Gamers Nexus), whatever motherboard is reasonably priced and won't hold me back when overclocking, etc. I'll post a separate guide later on how I choose my components.
+Your processor, motherboard, RAM, storage, power supply, case, and cooling system should simply be sufficient enough not to bottleneck your graphics card (you can use [this tool](https://pc-builds.com/calculator/) for checking if your CPU causes a bottleneck). This goes for VR gaming just like PC gaming in general. I opt for whatever processor currently has the highest single threaded performance (again, check Gamers Nexus), whatever motherboard is reasonably priced and won't hold me back when overclocking, etc. I'll post a separate guide later on how I choose my components (TODO).
 
 My first build from April 2019 can be found [here](https://pcpartpicker.com/user/monstermac77/saved/), if you're interested. 
 
