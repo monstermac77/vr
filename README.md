@@ -58,12 +58,28 @@ There are a few criteria that can be used when judging controllers:
 * Intuitiveness
   * When in-game, there should not be ambiguity as to what button or grip needs to be used. Buttons should be within reach for most hand sizes.
 * Haptics
-  * When interacting with objects in VR, it's critical to receieve tactile feedback to permit immersion into the environment. Controllers do this via small motors that vibrate to provide feedback. These haptics should feel commensurate with the action performed, not overly muted or buzzy.
+  * When interacting with objects in VR, it's critical to receive tactile feedback to provide the sensation that the user's physical space matches their visual space. Controllers do this via small motors that vibrate to provide feedback. These haptics should feel commensurate with the action performed, not overly muted or buzzy.
 
-As of this writing, the Valve Knuckles controllers are without equal on nearly all of these fronts, and offer even more benefits (individual finger tracking, recharging over USB-C, allowing an open-hand without dropping the controllers). In-game when gripping objects, I've struggled with both WMR and Oculus controllers as my reflex is split between clicking the grib button or the trigger button. 
+As of this writing, the Valve Knuckles controllers are without equal on nearly all of these fronts, and offer even more benefits (individual finger tracking, recharging over USB-C, allowing an open-hand without dropping the controllers). In-game when gripping objects, I've struggled with both Windows Mixed Reality (WMR) and Oculus controllers as my reflex is split between clicking the grip button and pulling the trigger button. 
 
 ### Tracking 
+Tracking technology is what's responsible for adjusting your position in virtual reality to match your movements in the physical world. Software and hardware work together to accomplish this. 
+
+There are currently two mediums that are used for tracking: 
+* Visible light
+* Infrared light. 
+
+Although two sets of controllers may use the same medium, their application of that medium may differ drastically. 
+* Some HMDs use cameras placed on the HMD to identify landmarks in physical space (such as the corner of a door, or the edge of a carpet) to create a 3D map of landmarks (via physical light). As the user moves around in physical space, software is used to calculate the user's position in physical space based on what the cameras can see. These calculations are then translated to movement in virtual space. This is known as "inside-out tracking".
+* Some HMDs use visible light emitted from controllers to 
+
+There is plenty of good discussion comparing tracking mechanisms, but I do want to highlight one very troubling downside to a fully visible light approach to tracking: since too much environmental light means the HMD will not be able to accurately track the position of the controllers, but too little environmental light means that the HMD will not be able to identify landmarks in physical space, environmental lighting must be controllable in both directions to achieve acceptable tracking; this is a downside that no other method experiences.
+
+Visible light is 
+
 I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
+
+
 
 ## Platform choice
 I've used all three major 
