@@ -65,21 +65,23 @@ As of this writing, the Valve Knuckles controllers are without equal on nearly a
 ### Tracking 
 Tracking technology is what's responsible for adjusting your position in virtual reality to match your movements in the physical world. Software and hardware work together to accomplish this. 
 
-There are currently two mediums that are used for tracking: 
+There are multiple hardware sensors that are used for tracking: 
+* Gyroscope
+* Accelerometer
+
+A gyroscope is a device that's used to establish a device's orientation, and an accelerometer is used to [determine a device's acceleration](https://www.youtube.com/watch?v=KZVgKu6v808). Given a known starting point, one could theroretically trace the position over time of an object using simply precise measurements of acceleration and orientation. However, to do precision limitations of these devices, the controllers and HMD would quickly "flyaway" to infinity in a matter of seconds. Thus, an extra reference point is needed to error correct this data. TODO: improve this section, this is going off of memory and I can't remember where it's frome.
+
+There are currently two mediums that are used for error-correction in tracking: 
 * Visible light
-* Infrared light. 
+* Infrared light (IR)
 
-Although two sets of controllers may use the same medium, their application of that medium may differ drastically. 
-* Some HMDs use cameras placed on the HMD to identify landmarks in physical space (such as the corner of a door, or the edge of a carpet) to create a 3D map of landmarks (via physical light). As the user moves around in physical space, software is used to calculate the user's position in physical space based on what the cameras can see. These calculations are then translated to movement in virtual space. This is known as "inside-out tracking".
-* Some HMDs use visible light emitted from controllers to 
+Although different hardware may use the same medium, their application of that medium may differ drastically: 
+* Some HMDs use cameras placed on the HMD to identify landmarks in physical space (such as the corner of a door, or the edge of a carpet) to create a 3D map of landmarks (via physical light). As the user moves around in physical space, software is used to calculate the user's position in physical space based on what the cameras can see. These calculations are then translated to movement in virtual space. This is known as "inside-out tracking", which uses a Simultaneous Location And Mapping (SLAM) algorithm to determine position.
+* Some controllers emit visible light from the controllers. The cameras on the HMD then track this visual light to calculate the controllers' position relative to the HMD, and therefore can infer its position in physical space. 
+* Some controllers emit infrared light from the controllers. The cameras on the HMD then track this infrared light in the same way the HMDs track controllers using visible light above. 
+* Some systems use extra devices called Lighthouses or Basestations. These devices remain stationary in the room at all times and do not communicate with your computer, HMD, or controllers. Much like actual lighthouses, these devices simply emit sweeping beams of IR at regular intervals across your room. Controllers and HMDs tracked by this method are scattered with small openings in the casing that allow the IR to penetrate and hit IR photodiodes (sensors that are sensitive to IR light) embedded into the device. By measuring the time between activations of these photodiodes, the device's position and orientation in space can be deduced with trivial calculation.
 
-There is plenty of good discussion comparing tracking mechanisms, but I do want to highlight one very troubling downside to a fully visible light approach to tracking: since too much environmental light means the HMD will not be able to accurately track the position of the controllers, but too little environmental light means that the HMD will not be able to identify landmarks in physical space, environmental lighting must be controllable in both directions to achieve acceptable tracking; this is a downside that no other method experiences.
-
-Visible light is 
-
-I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
-
-
+There is plenty of good discussion comparing tracking mechanisms, but I do want to highlight one very troubling downside to a visible light approach to track both the HMD and controllers in the same setup: since too much environmental light means the HMD will not be able to accurately track the position of the controllers, but too little environmental light means that the HMD will not be able to identify landmarks in physical space, environmental lighting must be controllable in both directions to achieve acceptable tracking; this is a downside that no other method experiences.
 
 ## Platform choice
 I've used all three major 
