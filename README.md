@@ -16,8 +16,13 @@ My first build, from April 2019, can be found [here](https://pcpartpicker.com/us
 
 ## VR Hardware
 
+For the best VR experience, you have to use a headset that is tethered to your powerful gaming PC (PCVR). While the standalone VR headsets have some marked advantages over PCVR, because they will always have the limitation of needing to mount to your head without breaking your neck, they will never be able to match the fidelity of a dedidcated 30 pound computer sitting on your floor.
+
+Since the best headset in a given year might not have the best controllers, getting the best experience may not mean just buying whatever one company (usually Valve) is selling. This is where [Mixed VR](https://www.reddit.com/r/MixedVR/) comes into play, since you may have to configure your headset from one company (e.g. Reverb G2) to work with your controllers and tracking system from another company (Valve Knuckles Controllers).
+
 ### Headset
 
+When choosing a headset (HMD), I optimize for photorealism. When you're looking at a picture. This incorporates  
 
 ### Controllers
 I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
