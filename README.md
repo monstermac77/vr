@@ -69,7 +69,7 @@ There are multiple hardware sensors that are used for tracking:
 * Gyroscope
 * Accelerometer
 
-A gyroscope is a device that's used to establish a device's orientation, and an accelerometer is used to [determine a device's acceleration](https://www.youtube.com/watch?v=KZVgKu6v808). Given a known starting point, one could theroretically trace the position over time of an object using simply precise measurements of acceleration and orientation. However, to do precision limitations of these devices, the controllers and HMD would quickly "flyaway" to infinity in a matter of seconds. Thus, an extra reference point is needed to error correct this data. TODO: improve this section, this is going off of memory and I can't remember where it's frome.
+A gyroscope is a device that's used to establish a device's orientation, and an accelerometer is used to [determine a device's acceleration](https://www.youtube.com/watch?v=KZVgKu6v808). Given a known starting point, one could theroretically trace the position over time of an object using simply precise measurements of acceleration and orientation. However, due to precision limitations of these devices, the controllers and HMD would quickly "flyaway" to infinity in a matter of seconds. Thus, an extra reference point is needed to error correct this data. TODO: improve this section, this is going off of memory and I can't remember where it's frome.
 
 There are currently two mediums that are used for error-correction in tracking: 
 * Visible light
