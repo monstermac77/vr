@@ -27,15 +27,15 @@ When choosing a headset, or head-mounted display (HMD), I optimize for photoreal
 * Photorealism: suppose you could alter any HMD to alternate between displaying what's on the panels behind the lenses to a user, and simply showing the user what's in front of them in reality (matching any losses in peripheral vision). Also suppose you could perfectly capture a 3D space and all lighting in a computer model in real-time. Then, say every 30 seconds, you alternated at random the HMD to display reality or this 3D space and asked the person to use their eyes and look around and guess whether they are seeing reality or a virtual reality. If their correct guess rate converges to 50% as the samples tend to infinity, then full photorealism has been achieved.
 * Visual Immersion: this is effectively Field of View (FoV), which is how much of your peripheral vision (both vertical and horizontal) is not obscured by the HMD. A headset has achieved full visual immersion when a user cannot detect any obstruction to their view due to the HMD. A test similar to the one described above could also be designed.
 
-It's important to note that there are ergonomic factors that affect a given HMDs ability to achieve photorealism and visual immersion. The most important one is interpupillary distance (IPD). 
+It's important to note that there are ergonomic factors that affect a given HMDs ability to achieve photorealism and visual immersion. The most important one is interpupillary distance (IPD), which is effectively the distance between someone's eyes (this can have an impact on both photorealism and visual immersion). The second is face shape, which can fit better or worse for a given HMD's face gasket (this largely just impacts visual immersion). Certain headsets offer these ergonomic features to maximize their photorealism and visual immersion for as large a segment of the population as possible.
 
 #### Photorealism
 
-Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. The best one can do is read reviews by trusted reviewers of VR, or trying the HMDs first-hand. Here are some of the most notable factors:
+Tragically, there's no objective measure for photorealism. It's a combination of many factors, some of which aren't quantifiable or aren't easily comparable between different HMDs. The best one can do is read reviews by trusted reviewers of VR, but given that ergonomics play a role there's no substitue for trying the HMDs first-hand. Here are some of the most notable factors:
 * Angular pixel density (or pixels per degree)
   * An estimate for this value can be determined by both the resolution of the display(s) inside the HMD as well as the FoV afforded by the optics, as described [here](https://www.roadtovr.com/understanding-pixel-density-retinal-resolution-and-why-its-important-for-vr-and-ar-headsets/). It's important to note, however, that because optical systems vary from HMD to HMD, it's not technically accurate to compare based on this metric. For instance, utilization of the panel can vary across HMDs. That is, the panel may be 2160p (horizontal lines), but only light from 1960p is making it into the optics.
-* Optics quality
- * This is even harder to quantify and compare across HMDs, but issues with optics quality can result in artifacts that detract from photorealism, such as chromatic abberation 
+* Optics
+ * This is even harder to quantify and compare across HMDs, but issues with optics quality can result in artifacts that detract from photorealism, such as chromatic abberation. TODO: elaborate a lot here, discuss fresnel lenses, etc.
 * Contrast ratio 
   * This refers essentially to the range of the display. Usually the display type is a driving factor here (LCD, OLED, etc.), but other things can play a role 
 * Color gamut
@@ -43,12 +43,13 @@ Tragically, there's no objective measure for photorealism. It's a combination of
 * Display persistence
 
 #### Visual immersion
-
 This almost directly corresponds to Field of View (FoV). Humans have slightly over 210 degrees of horizontal FoV and 150 degrees of vertical FoV. 
 
 ### Controllers
-I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
 
+
+### Tracking 
+I've used all three major tracking systems: lighthouse (Valve/Vive), infrared light (Oculus), and visible light (Windows Mixed Reality). 
 
 ## Platform choice
 I've used all three major 
