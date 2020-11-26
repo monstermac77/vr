@@ -104,7 +104,7 @@ I also add all non-Steam games thate I've purchased from other stores or downloa
 
 ## Perfecting Icons/Artwork for non-Steam games in SteamVR
 
-**Upshot**: for non-Steam games, SteamVR uses whatever image is specified as the "shortcut icon", which is by default the .exe's ico, every time an icon/artwork needs to be displayed for that game. To override this, you need to specify a tall image (specifically, 600x900px) for that icon, and then follow step "c)" below to specify a wide icon (460×215px). The tall image will be displayed in your SteamVR dashboard, and the wide image will be displayed in "Recent Apps" in SteamVR Home, the loading screen when you first launch a game, and Big Picture Mode if you use it within SteamVR. It's not possible to achieve this setup via the GUI, which I believe is why [so](https://www.reddit.com/r/SteamVR/comments/cbjquw/game_icons_not_appearing_in_steam_vr/). [many](https://www.reddit.com/r/SteamVR/comments/6pqem8/adding_images_within_steamvr_to_nonsteam_games/). [people](https://steamcommunity.com/app/250820/discussions/0/2666627027759705661/). [are](https://www.reddit.com/r/Vive/comments/ce7h6z/has_anyone_found_out_how_to_add_custom_steam_grid/) are not able to get it working, and most of the questions about it go unanswered.
+**Upshot**: for non-Steam games, SteamVR uses whatever image is specified as the "shortcut icon", which is by default the .exe's ico, every time an icon/artwork needs to be displayed for that game. To override this, you need to specify a tall image (specifically, 600x900px) for that icon, and then follow step "c)" below to specify a wide icon (460×215px). The tall image will be displayed in your SteamVR dashboard, and the wide image will be displayed in "Recent Apps" in SteamVR Home, the loading screen when you first launch a game, and Big Picture Mode if you use it within SteamVR. It's not possible to achieve this setup via the GUI, which I believe is why [so](https://www.reddit.com/r/SteamVR/comments/cbjquw/game_icons_not_appearing_in_steam_vr/). [many](https://www.reddit.com/r/SteamVR/comments/6pqem8/adding_images_within_steamvr_to_nonsteam_games/). [people](https://steamcommunity.com/app/250820/discussions/0/2666627027759705661/). [are](https://www.reddit.com/r/Vive/comments/ce7h6z/has_anyone_found_out_how_to_add_custom_steam_grid/) not able to get it working, and most of the questions about it go unanswered.
 
 **Detail and steps**
 
@@ -142,6 +142,24 @@ k) There is a known issue with the native Steam VR's Google Earth grid icons tha
 
 ## Start-up/Shutdown 
 
-Known issue: Bluetooth in SteamVR https://www.reddit.com/r/MixedVR/comments/jz967q/unable_to_auto_shutdown_basestations_via_steamvr/
+For everyone in VR, but especially those folk who use devices from different ecosystems [Mixed VR](https://www.reddit.com/r/MixedVR/), there is a lot of configuration that needs to be done when you start a VR session. For instance, for Mixed VR setups, the [SteamVR bluetooth settings are disabled](https://www.reddit.com/r/MixedVR/comments/jz967q/unable_to_auto_shutdown_basestations_via_steamvr/), preventing the autostartup and autoshutdown of the basestations when SteamVR is open and quit.
 
-A collection of misc scripts/tools that I've written to manage using devices from different ecosystems (e.g. Valve and WMR) at the same time
+This script manages all of this startup and shutdown for my Reverb G2 + Basestation 2.0 + Knuckle controllers setup, but it should be pretty easily modified to work with _any_ PCVR headset.
+
+This script will:
+
+* Manage the shutdown/startup of your basestations (so you don't need to use the Android app or smart plugs)
+* Disable/re-enable the USB for your headset so you don't have to unplug it every session. This turns off the HP logo on the G2 and will prevent your computer from spending any resources talking to the headset (I found my computer was a bit fritzy when my G2 was not in use and I was just web browsing).
+* Launches/kills SteamVR and WMR, and auto-kills Steam VR Room Setup (much to the relief of [OpenVR Space Calibrator](https://github.com/pushrax/OpenVR-SpaceCalibrator) users)
+
+**Prerequisites**
+
+* Download [Lighthouse manager](https://github.com/nouser2013/lighthouse-v2-manager) and place in preferred directory. 
+* Download [USBDeview](https://www.nirsoft.net/utils/usb_devices_view.html) (link at very bottom of page) and place in preferred directory.
+* Download my scripts [startvr.bat](https://github.com/monstermac77/mixed-vr/blob/main/startvr.bat) and [stopvr.bat](https://github.com/monstermac77/mixed-vr/blob/main/stopvr.bat) or just copy and paste their contents into an empty text file and save.
+* Edit my scripts to include your:
+ * Basestations' MAC addresses (just run `lighthouse-v2-manager.exe discover` in the command prompt to figure out what they are)
+ *  Username/path to where you downloaded the files
+
+**Usage**
+* Just click "startvr.bat" or "stopvr.bat". I'll probably add some nice icons eventually.
