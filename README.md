@@ -22,9 +22,9 @@ Since the best headset in a given year might not have the best controllers, gett
 
 ### Headset
 
-When choosing a headset (HMD), I optimize for photorealism, then immersion. Defining these terms is easiest by example. 
+When choosing a headset, or head-mounted display (HMD), I optimize for photorealism, then immersion. Defining these terms is easiest by example. 
 
-* Photorealism: suppose you could alter any HMD to alternate between displaying what's on the panels behind the lenses to a user, and simply showing the user what's in front of them in reality (matching any loss in peripheral vision). Then, say every 30 seconds, you were ask someone wearing this display to close and re-open their eyes and look around without moving their head. If their guess rate for whether they were seeing reality, or the virtual reality that was displayed by capturing their environment in 3D and displaying it on the HMD's screen, converges to 50% as the samples tend to infinity, then photorealism has been achieved.
+* Photorealism: suppose you could alter any HMD to alternate between displaying what's on the panels behind the lenses to a user, and simply showing the user what's in front of them in reality (matching any losses in peripheral vision). Then, say every 30 seconds, you alternated at random the HMD to display reality or virtual reality and asked the person to use their eyes and look around without moving their head and guess what they were seeing. If their guess rate for whether they were seeing reality, or the virtual reality that was displayed by capturing their environment in 3D and displaying it on the HMD's screen, converges to 50% as the samples tend to infinity, then photorealism has been achieved.
 * Immersion: 
 
 #### Photorealism
