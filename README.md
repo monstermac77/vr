@@ -54,11 +54,11 @@ This almost directly corresponds to the HMD's Field of View (FoV). Humans have s
 ### Controllers
 There are a few criteria that can be used when judging controllers: 
 * Build quality
- * It's unpleasant to hold creaky or noticeably cheap plastic in your hand. Buttons should be satisfying to actuate.
+  * It's unpleasant to hold creaky or noticeably cheap plastic in your hand. Buttons should be satisfying to actuate.
 * Intuitiveness
- * When in-game, there should not be ambiguity as to what button or grip needs to be used. Buttons should be within reach for most hand sizes.
+  * When in-game, there should not be ambiguity as to what button or grip needs to be used. Buttons should be within reach for most hand sizes.
 * Haptics
- * When interacting with objects in VR, it's critical to receieve tactile feedback to permit immersion into the environment. Controllers do this via small motors that vibrate to provide feedback. These haptics should feel commensurate with the action performed, not overly muted or buzzy.
+  * When interacting with objects in VR, it's critical to receieve tactile feedback to permit immersion into the environment. Controllers do this via small motors that vibrate to provide feedback. These haptics should feel commensurate with the action performed, not overly muted or buzzy.
 
 As of this writing, the Valve Knuckles controllers are without equal on nearly all of these fronts, and offer even more benefits (individual finger tracking, recharging over USB-C, allowing an open-hand without dropping the controllers). In-game when gripping objects, I've struggled with both WMR and Oculus controllers as my reflex is split between clicking the grib button or the trigger button. 
 
