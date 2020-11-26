@@ -100,9 +100,45 @@ The next thing you'll want to do is use SteamVR Home's menus to create your phys
 
 As mentioned above, all games are currently built on OpenVR. This means that, although some games may claim to be exclusive to a certain platform (like Oculus), they are technically portable to other HMDs. Sometimes this works without extra configuration, but as of this writing for Oculus-exclusive games you'll need software called [Revive](https://github.com/LibreVR/Revive) to accomplish it.
 
+I also add all non-Steam games thate I've purchased from other stores or downloaded directly to Steam so that I can launch and browse my games from within SteamVR with ease.
+
 ## Perfecting Icons/Artwork for non-Steam games in SteamVR
 
-Known issue: Google Earth https://github.com/ValveSoftware/openvr/issues/1421
+**Upshot**: for non-Steam games, SteamVR uses whatever image is specified as the "shortcut icon", which is by default the .exe's ico, every time an icon/artwork needs to be displayed for that game. To override this, you need to specify a tall image (specifically, 600x900px) for that icon, and then follow step "c)" below to specify a wide icon (460×215px). The tall image will be displayed in your SteamVR dashboard, and the wide image will be displayed in "Recent Apps" in SteamVR Home, the loading screen when you first launch a game, and Big Picture Mode if you use it within SteamVR. It's not possible to achieve this setup via the GUI, which I believe is why [so](https://www.reddit.com/r/SteamVR/comments/cbjquw/game_icons_not_appearing_in_steam_vr/). [many](https://www.reddit.com/r/SteamVR/comments/6pqem8/adding_images_within_steamvr_to_nonsteam_games/). [people](https://steamcommunity.com/app/250820/discussions/0/2666627027759705661/). [are](https://www.reddit.com/r/Vive/comments/ce7h6z/has_anyone_found_out_how_to_add_custom_steam_grid/) are not able to get it working, and most of the questions about it go unanswered.
+
+**Detail and steps**
+
+One thing that has bothered me more than anything else about SteamVR: the game icons/artwork in SteamVR only work as they should for Steam native games. If you have a lot of non-Steam games like me, at best you have icons that are either too tall or too wide and get stretched, blurred, or cropped to fill the various places Steam displays your games ([example](https://imgur.com/a/PKn9PRI)), or at worst you have dozens of gray boxes with no icons that you have to tap through to figure out what games they are ([example](https://imgur.com/a/qOPQkg8)). 
+
+**a) Getting the images** 
+
+This is a bonus section, which you can skip this if you already have images or know where to get them. Most likely, you should just use [SteamgridDB](https://www.steamgriddb.com/) to find images that are approximately the right aspect ratio you need and proceed to b), but if you're a perfectionist like me and want to exploit my many hours reading through Steam's game developer docs and writing a script to scrape Steam's site to figure this out, you should do the following (Note: your game has to be sold on Steam for this to work) Figure out your game's app ID on Steam (it's the number in the URL, e.g. https://store.steampowered.com/app/620980/Beat_Saber/). Visit these links below, replacing your app ID with Beat Saber's: 
+
+* https://steamcdn-a.akamaihd.net/steam/apps/620980/header.jpg
+* https://steamcdn-a.akamaihd.net/steam/apps/620980/logo.png
+* https://steamcdn-a.akamaihd.net/steam/apps/620980/library_hero.jpg
+* https://steamcdn-a.akamaihd.net/steam/apps/620980/library_600x900.jpg 
+
+(note: you can add "_2x" before the jpg to get double the resolution on that last one). Now save these images, and set them in all the right places in desktop Steam (this part isn't tricky and can be done via the GUI). Basically, every time you know there should be an image somewhere, right click on the empty space and you'll see "Set custom background" or "Set custom logo" or in the case of the collections view: "set custom artwork". I'll type out all the places and how to set the images in the comments if someone's confused.
+
+
+**b) Setting the "tall" icon** 
+
+This can be any number of ways, but the fastest is to right click on your game in the left sidebar, click properties, then click "choose icon" and select your 600x900px image. This image will be displayed in all "tall" views, most notably when you are using the SteamVR dashboard. Sidenote: SteamVR really _shouldn't_ be the image from here, and should specify another location for the 600x900px image, but this is what we have to do to work around how things are being handled. 
+
+**c) Setting the "wide" icon** 
+
+This was the hardest part to figure out. Right click on your game in the left sidebar, hover over "Manage" and then click "Add Desktop Shortcut". Go to your desktop and right click on the shortcut you created, and then click on the "Details" tab and copy the number you see in the URL. Now go to the directory where Steam is installed (likely "Program Files") and go to userdata, the folder that's just a number (which is your Steam user ID, btw), "config", and then "grid". You'll see a lot of the images you set earlier in step a). Now take your 460×215 image and put it in this directory and name it the number you pulled from that URL at the beginning of step c). Side note: you may notice that this app ID you pulled is _different_ than the app ID in the other images for this same game. Why? No idea, probably so that Valve could enjoy watching me spin my wheels for 4 hours trying to figure out how to get this to work.
+
+Now all you should have to do is quit Steam, re-open it, and launch SteamVR. Enjoy your now beautiful SteamVR library!
+
+**Some improvements are needed** 
+
+i) it seems like there are slightly different wide icon dimensions displayed in SteamVR and I've only figured out how to specify one of them. If your 460×215 image looks stretched where you see it most, use a different image with another aspect ratio that's a better fit until someone can figure out how to get both working simultaneously. 
+
+j) I have not figured out how to get the little tiny icons in desktop Steam to stay squares with this setup. But it's probably possible. Again, someone else hopefully can figure this part out. If them being rectangles bothers you, you can turn them off entirely in "Settings" > "Library" and uncheck "Show game icons in the left column".
+
+k) There is a known issue with the native Steam VR's Google Earth grid icons that I have not been able to override. I've [opened a Github issue](https://github.com/ValveSoftware/openvr/issues/1421).
 
 ## Start-up/Shutdown 
 
