@@ -159,7 +159,7 @@ k) There is a known issue with the native Steam VR's Google Earth grid icons tha
 
 ## Start-up/Shutdown 
 
-For everyone in VR, but especially those folk who use devices from different ecosystems [Mixed VR](https://www.reddit.com/r/MixedVR/), there is a lot of configuration that needs to be done when you start a VR session. For instance, for Mixed VR setups, the [SteamVR bluetooth settings are disabled](https://www.reddit.com/r/MixedVR/comments/jz967q/unable_to_auto_shutdown_basestations_via_steamvr/), preventing the autostartup and autoshutdown of the basestations when SteamVR is open and quit.
+For everyone in VR, but especially those folk who use devices from different ecosystems (knows as [Mixed VR](https://www.reddit.com/r/MixedVR/)), there is a lot of configuration that needs to be done when you start a VR session. For instance, for Mixed VR setups, the [SteamVR bluetooth settings are disabled](https://www.reddit.com/r/MixedVR/comments/jz967q/unable_to_auto_shutdown_basestations_via_steamvr/), preventing the autostartup and autoshutdown of the basestations when SteamVR is open and quit.
 
 This script manages all of this startup and shutdown for my Reverb G2 + Basestation 2.0 + Knuckle controllers setup, but it should be pretty easily modified to work with _any_ PCVR headset.
 
