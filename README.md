@@ -175,8 +175,8 @@ This script will:
 * Download [USBDeview](https://www.nirsoft.net/utils/usb_devices_view.html) (link at very bottom of page) and place in preferred directory.
 * Download my scripts [startvr.bat](https://github.com/monstermac77/mixed-vr/blob/main/startvr.bat) and [stopvr.bat](https://github.com/monstermac77/mixed-vr/blob/main/stopvr.bat) or just copy and paste their contents into an empty text file and save.
 * Edit my scripts to include your:
- * Basestations' MAC addresses (just run `lighthouse-v2-manager.exe discover` in the command prompt to figure out what they are)
- *  Username/path to where you downloaded the files
+  * Basestations' MAC addresses (just run `lighthouse-v2-manager.exe discover` in the command prompt to figure out what they are)
+  *  Username/path to where you downloaded the files
 
 **Usage**
 * Just click "startvr.bat" or "stopvr.bat". I'll probably add some nice icons eventually.
