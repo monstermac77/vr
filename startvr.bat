@@ -11,8 +11,18 @@ echo Starting SteamVR
 start steam://launch/250820/VR
 :: we kill steam VR room setup to patch a known bug that causes it to launch on steamvr startup
 echo Waiting until Steam VR Room Setup launches...
-timeout 25
+timeout 30
 echo Killing Steam VR Room Setup
 taskkill /f /im "steamvr_room_setup.exe"
+:: thank you https://stackoverflow.com/a/45853089/2611730
+set "file=started.mp3"
+( echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+  echo Sound.URL = "%file%"
+  echo Sound.Controls.play
+  echo do while Sound.currentmedia.duration = 0
+  echo wscript.sleep 100
+  echo loop
+  echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >headlessSound.vbs
+cscript.exe //nologo headlessSound.vbs
 echo "Done! Enjoy VR"
-timeout 5
+timeout 2
