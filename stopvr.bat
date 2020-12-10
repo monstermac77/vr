@@ -2,7 +2,7 @@
 title Start VR programs
 :: remember to edit the paths below. Also be sure to change the MAC addresses at the end of this line (run `lighthouse-v2-manager.exe discover`)
 echo Stopping lighthouses...
-"%userprofile%\Documents\Misc\vr\lighthouses\source\lighthouse-v2-manager.exe" off FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
+"%userprofile%\Dropbox\big-bro-peep\vr\lighthouse-v2-manager.exe" off FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 echo Disabling Reverb G2 headset
 "%userprofile%\Documents\Misc\vr\USBDeview.exe" /RunAsAdmin /disable "HoloLens Sensors"
 echo Killing WMR application
