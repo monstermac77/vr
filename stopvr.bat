@@ -16,4 +16,12 @@ taskkill /IM vrcompositor.exe /F
 taskkill /IM steamtours.exe /F
 taskkill /IM TurnSignal.exe /F
 echo "Done!"
-timeout 2
+set "file=stopped.mp3"
+( echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+  echo Sound.URL = "%file%"
+  echo Sound.Controls.play
+  echo do while Sound.currentmedia.duration = 0
+  echo wscript.sleep 100
+  echo loop
+  echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >headlessSound.vbs
+cscript.exe //nologo headlessSound.vbs
