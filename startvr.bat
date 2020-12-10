@@ -4,7 +4,7 @@ title Start VR programs
 echo Starting lighthouses...
 "%userprofile%\Dropbox\big-bro-peep\vr\lighthouse-v2-manager.exe" on FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 echo Enabling Reverb G2 headset...
-"%userprofile%\Documents\Misc\vr\USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
+"%userprofile%\Dropbox\big-bro-peep\vr\USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
 echo "Giving the device a bit to boot up"
 timeout 10
 echo Starting SteamVR
