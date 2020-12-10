@@ -2,9 +2,9 @@
 title Start all VR programs
 :: remember to edit the paths below. Also be sure to change the MAC addresses at the end of this line (run `lighthouse-v2-manager.exe discover`)
 echo Starting lighthouses...
-"%userprofile%\Dropbox\big-bro-peep\vr\lighthouse-v2-manager.exe" on FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
+"lighthouse-v2-manager.exe" on FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 echo Enabling Reverb G2 headset...
-"%userprofile%\Dropbox\big-bro-peep\vr\USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
+"USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
 echo "Giving the device a bit to boot up"
 timeout 10
 echo Starting SteamVR
