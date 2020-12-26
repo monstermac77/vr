@@ -165,7 +165,7 @@ This script manages all of this startup and shutdown for my Reverb G2 + Basestat
 
 This script will:
 
-* Manage the shutdown/startup of your basestations (so you don't need to use the Android app or smart plugs)
+* Manage the shutdown/startup of your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs)
 * Disable/re-enable the USB for your headset so you don't have to unplug it every session. This turns off the HP logo on the G2 and will prevent your computer from spending any resources talking to the headset (I found my computer was a bit fritzy when my G2 was not in use and I was just web browsing).
 * Launches/kills SteamVR and WMR, and auto-kills Steam VR Room Setup (much to the relief of [OpenVR Space Calibrator](https://github.com/pushrax/OpenVR-SpaceCalibrator) users)
 
