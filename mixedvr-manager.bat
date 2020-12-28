@@ -50,6 +50,7 @@ if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
 :: if we got to this point, then that means that SteamVR's status has just changed
 :: so we call our stateChanged function, which effectively passes the the new state
 :: in as "steamvrStatus"
+echo Change detected in Steam VR running status.
 goto stateChanged
 
 
@@ -63,7 +64,16 @@ goto stateChanged
 :: "parameterized" by whatever value is set in steamvrStatus
 :stateChanged
 
-if 
+: toggle lighthouse state
+if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
+echo Turning lighthouses %desiredLighthouseState%...
+lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
+
+
+
+:: mark the new last known state
+set steamvrLastKnownStatus=%steamvrStatus%
+echo %steamvrLastKnownStatus%
 
 goto whileTrueLoop
 
