@@ -48,19 +48,31 @@ if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
 )
 
 :: if we got to this point, then that means that SteamVR's status has just changed
-
-echo %steamvrStatus%
-
-echo Waiting....
-
+:: so we call our stateChanged function, which effectively passes the the new state
+:: in as "steamvrStatus"
+goto stateChanged
 
 
 
+:::::::::::::::
+:: functions ::
+:::::::::::::::
 
-:: wait for some time, to prevent a tight loop that eats up CPU cycles
-timeout %pollingRate%
 
-:: trigger goto (end of loop)
+:: function that's called when the user has just launched/quit SteamVR
+:: "parameterized" by whatever value is set in steamvrStatus
+:stateChanged
+
+if 
+
 goto whileTrueLoop
+
+
+
+
+
+
+
+
 
 
