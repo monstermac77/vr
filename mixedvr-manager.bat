@@ -20,6 +20,9 @@ set pollingRate=2
 :: 3. Run `lighthouse-v2-manager.exe discover`
 set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 
+:: TODO: allow users to specify what kind of headset, right now this script only supports WMR
+:: TODO: users may want to disable this feature, not everyone might want the port disabled/enabled
+
 ::::::::::::::::::::::::
 
 
@@ -69,6 +72,10 @@ if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desi
 echo Turning lighthouses %desiredLighthouseState%...
 lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 
+: toggle state of the USB that the headset is plugged into
+if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
+echo Changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
+USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
 
 :: mark the new last known state
