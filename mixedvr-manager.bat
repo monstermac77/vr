@@ -20,6 +20,18 @@ set pollingRate=2
 :: 3. Run `lighthouse-v2-manager.exe discover`
 set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 
+:: steamVRLaunchTime is about how long (in seconds) you expect it to take for SteamVR to launch
+:: this value is used in a minimum manner, so setting it too high will result in it taking a while before
+:: your MixedVR setup is ready for you to play. If Room Setup isn't quitting for you, try raising this value.
+set steamVRLaunchTime=3
+
+:: maxWaitTimeForRoomSetup is how long (in seconds) you ever would expect it to take for the 
+:: SteamVR Room Setup to open after a launch of SteamVR. This is essentially a timeout value.
+:: Note: if you want to run SteamVR Room Setup, just launch VR, let this script kill it 
+:: and then manually start it from the SteamVR status window. This script will only ever kill it 
+:: once per VR session.
+set maxWaitTimeForRoomSetup=60
+
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
 :: TODO: users may want to disable this feature, not everyone might want the port disabled/enabled
 
@@ -67,16 +79,30 @@ goto stateChanged
 :: "parameterized" by whatever value is set in steamvrStatus
 :stateChanged
 
-: toggle lighthouse state
+:: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
 echo Turning lighthouses %desiredLighthouseState%...
 lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 
-: toggle state of the USB that the headset is plugged into
+:: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 echo Changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
+:: if we're switching to the running state, then we also need to restart SteamVR now that 
+:: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected
+:: when SteamVR is opened.  
+if "%steamvrStatus%" == "running" (
+	echo Killing SteamVR and restarting it so it can detect the now powered on lighthouses and HMD.
+	taskkill /f /im "vrmonitor.exe" 
+	start steam://launch/250820/VR
+	echo Waiting for SteamVR to start back up...
+	timeout %steamVRLaunchTime%
+)
+
+:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
+:: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
+:: continue with the script's execution.
 
 :: mark the new last known state
 set steamvrLastKnownStatus=%steamvrStatus%
