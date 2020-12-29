@@ -87,9 +87,12 @@ USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
 :: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected
+:: note, we need to kill room setup if it's running because otherwise it may still be open when we 
+:: start relying on it being quit when blocking on the next loop
 :: when SteamVR is opened.  
 if "%steamvrStatus%" == "running" (
 	echo Killing SteamVR and restarting it so it can detect the now powered on lighthouses and HMD.
+	taskkill /f /im "steamvr_room_setup.exe"
 	taskkill /f /im "vrmonitor.exe" 
 	start steam://launch/250820/VR
 )
@@ -99,9 +102,9 @@ if "%steamvrStatus%" == "running" (
 :: continue with the script's execution.
 : roomSetupLoop
 echo Waiting for SteamVR to start back up and to close Room Setup...
-tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
-if "%ERRORLEVEL%"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
 for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
+	tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
+	if "%ERRORLEVEL%"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
 	if "%roomSetupStatus%" == "running" (
 		taskkill /f /im "steamvr_room_setup.exe" 
 		goto break
