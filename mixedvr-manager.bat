@@ -7,11 +7,6 @@
 
 :::::: config area ::::::
 
-:: pollingRate is how often (in seconds) this script will check to see if SteamVR has started running
-:: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
-:: sooner after you start/quit SteamVR
-set pollingRate=2 
-
 :: specify the MAC addresses of your lighthouses here. 
 :: If you have an Android device, you can downnload the "Lighthouse Power Management" app to find the MAC addresses: https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm
 :: Alternatively, you can:
@@ -20,20 +15,21 @@ set pollingRate=2
 :: 3. Run `lighthouse-v2-manager.exe discover`
 set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 
-:: steamVRLaunchTime is about how long (in seconds) you expect it to take for SteamVR to launch
-:: this value is used in a minimum manner, so setting it too high will result in it taking a while before
-:: your MixedVR setup is ready for you to play. If Room Setup isn't quitting for you, try raising this value.
-set steamVRLaunchTime=3
-
 :: maxWaitTimeForRoomSetup is how long (in seconds) you ever would expect it to take for the 
 :: SteamVR Room Setup to open after a launch of SteamVR. This is essentially a timeout value.
 :: Note: if you want to run SteamVR Room Setup, just launch VR, let this script kill it 
 :: and then manually start it from the SteamVR status window. This script will only ever kill it 
-:: once per VR session.
+:: once per VR session. If you're getting a loop where your basestations turn on and then off
+:: when you start VR, that could be because this value is too low.
 set maxWaitTimeForRoomSetup=60
 
+:: pollingRate is how often (in seconds) this script will check to see if SteamVR has started running
+:: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
+:: sooner after you start/quit SteamVR
+set pollingRate=2 
+
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
-:: TODO: users may want to disable this feature, not everyone might want the port disabled/enabled
+:: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
 
 ::::::::::::::::::::::::
 
@@ -65,7 +61,7 @@ if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
 :: if we got to this point, then that means that SteamVR's status has just changed
 :: so we call our stateChanged function, which effectively passes the the new state
 :: in as "steamvrStatus"
-echo Change detected in Steam VR running status.
+echo Change detected in SteamVR running status. SteamVR is now %steamvrStatus%
 goto stateChanged
 
 
@@ -96,13 +92,24 @@ if "%steamvrStatus%" == "running" (
 	echo Killing SteamVR and restarting it so it can detect the now powered on lighthouses and HMD.
 	taskkill /f /im "vrmonitor.exe" 
 	start steam://launch/250820/VR
-	echo Waiting for SteamVR to start back up...
-	timeout %steamVRLaunchTime%
 )
 
 :: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
 :: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
 :: continue with the script's execution.
+: roomSetupLoop
+echo Waiting for SteamVR to start back up and to close Room Setup...
+tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
+if "%ERRORLEVEL%"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
+for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
+	if "%roomSetupStatus%" == "running" (
+		taskkill /f /im "steamvr_room_setup.exe" 
+		goto break
+	) else (
+		timeout 1
+	)
+)
+:break
 
 :: mark the new last known state
 set steamvrLastKnownStatus=%steamvrStatus%
