@@ -99,13 +99,17 @@ if "%steamvrStatus%" == "running" (
 
 :: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
 :: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
-:: continue with the script's execution.
+:: continue with the script's execution. 
+:: note: this "delayed expansion" business really got me; apparently variables are 
+:: evaluated before execution time unless you do this and then use ! instead of %. craziness.
 : roomSetupLoop
 echo Waiting for SteamVR to start back up and to close Room Setup...
+setlocal EnableDelayedExpansion
 for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 	tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
-	if "%ERRORLEVEL%"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
-	if "%roomSetupStatus%" == "running" (
+	if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
+	echo "!roomSetupStatus!"
+	if "!roomSetupStatus!" == "running" (
 		taskkill /f /im "steamvr_room_setup.exe" 
 		goto break
 	) else (
