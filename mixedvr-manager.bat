@@ -28,6 +28,10 @@ set maxWaitTimeForRoomSetup=60
 :: sooner after you start/quit SteamVR
 set pollingRate=1 
 
+:: lighthouseAttempts is how many times this script should try to send "on" and "off" commands to the lighthouses
+:: if you are constantly having an issue where one lighthouse turns off or on and the other doesn't you should raise this value
+set lighthouseAttempts=2
+
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
 :: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
 :: TODO: minimize WMR immediately 
@@ -92,8 +96,10 @@ USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
-echo MixedVR-Manager is turning lighthouses %desiredLighthouseState%...
-lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
+for /L %%i in (1,1,%lighthouseAttempts%) do (
+	echo MixedVR-Manager is turning lighthouses %desiredLighthouseState%...
+	lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
+)
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
 :: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected when SteamVR is opened
