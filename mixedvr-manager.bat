@@ -1,4 +1,4 @@
-::@echo off
+@echo off
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: This script was created for users of MixedVR (see the /r/MixedVR subreddit) by monstermac77
@@ -105,53 +105,40 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "vrserver.exe"
 	taskkill /f /im "OpenVR-SpaceCalibrator.exe" 2>NUL
 	start steam://launch/250820/VR
-	goto roomSetupLoop
-	:roomSetupQuitComplete
+	
+	:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
+	:: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
+	:: continue with the script's execution. 
+	:: note: this "delayed expansion" business really got me; apparently variables are 
+	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
+	echo Waiting for SteamVR to start back up and to close Room Setup...
+	setlocal EnableDelayedExpansion
+	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
+		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
+		if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
+		if "!roomSetupStatus!" == "running" (
+			taskkill /f /im "steamvr_room_setup.exe" 
+			goto roomSetupQuitComplete
+		) else (
+			timeout 1 >NUL
+		)
+	)
 ) else (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
 	:: any other applications that won't be shut down automatically, like WMR
 	taskkill /f /im "MixedRealityPortal.exe"
 )
 
+:: apparently you can't put markers inside if statements otherwise this would be a "break"
+:: inside the if statement above for better readability....thanks batch
+:roomSetupQuitComplete
+
 :: mark the new last known state
 set steamvrLastKnownStatus=%steamvrStatus%
 echo MixedVR-Manager has finished procedure for SteamVR's state changing to: %steamvrStatus%
 
+:: we've done our job, let's return to the main loop now
 goto whileTrueLoop
-
-
-
-
-:: this is a function that specifically handles the 
-:: quitting of room setup; although it'd be nice to put this inside
-:: an if statement, apparently I'm not a good enough programmer to do that
-:: withotu a ") was unexpected at this time" from being thrown
-:: TODO: ask around for help getting that working so the code flow is better
-
-:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
-:: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
-:: continue with the script's execution. 
-:: note: this "delayed expansion" business really got me; apparently variables are 
-:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
-:roomSetupLoop
-echo Waiting for SteamVR to start back up and to close Room Setup...
-setlocal EnableDelayedExpansion
-for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
-	tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
-	if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
-	if "!roomSetupStatus!" == "running" (
-		taskkill /f /im "steamvr_room_setup.exe" 
-		goto break
-	) else (
-		timeout 1 >NUL
-	)
-)
-:break
-goto roomSetupQuitComplete
-
-
-
-
 
 
 
