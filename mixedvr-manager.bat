@@ -93,7 +93,12 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "steamvr_room_setup.exe"
 	taskkill /f /im "vrmonitor.exe"
 	taskkill /f /im "vrserver.exe"
+	timeout 1
 	start steam://launch/250820/VR
+) else (
+	:: this means they just shut down SteamVR, which means we'll also want to clean up 
+	:: any other applications that won't be shut down automatically, like WMR
+	taskkill /f /im "MixedRealityPortal.exe"
 )
 
 :: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
@@ -107,7 +112,6 @@ setlocal EnableDelayedExpansion
 for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 	tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
 	if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
-	echo "!roomSetupStatus!"
 	if "!roomSetupStatus!" == "running" (
 		taskkill /f /im "steamvr_room_setup.exe" 
 		goto break
