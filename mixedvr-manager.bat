@@ -26,7 +26,7 @@ set maxWaitTimeForRoomSetup=60
 :: pollingRate is how often (in seconds) this script will check to see if SteamVR has started running
 :: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
 :: sooner after you start/quit SteamVR
-set pollingRate=2 
+set pollingRate=1 
 
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
 :: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
@@ -41,7 +41,7 @@ title MixedVR Manager
 :whileTrueLoop 
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
-tasklist /FI "IMAGENAME eq vrmonitor.exe" 2>NUL | find /I /N "vrmonitor.exe">NUL
+tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
 if "%ERRORLEVEL%"=="0" (set steamvrStatus=running) else (set steamvrStatus=quit)
 
 :: handle the first loop case; we'll only detect changes to the running status since the script started, not on first run
@@ -53,7 +53,6 @@ if "%steamvrLastKnownStatus%" == "" (
 
 :: handle the case where there is no change
 if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
-	echo No change in detected in Steam VR running status.
 	timeout %pollingRate%
 	goto whileTrueLoop
 )
@@ -86,14 +85,14 @@ echo Changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
-:: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected
+:: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected when SteamVR is opened
 :: note, we need to kill room setup if it's running because otherwise it may still be open when we 
 :: start relying on it being quit when blocking on the next loop
-:: when SteamVR is opened.  
 if "%steamvrStatus%" == "running" (
 	echo Killing SteamVR and restarting it so it can detect the now powered on lighthouses and HMD.
 	taskkill /f /im "steamvr_room_setup.exe"
-	taskkill /f /im "vrmonitor.exe" 
+	taskkill /f /im "vrmonitor.exe"
+	taskkill /f /im "vrserver.exe"
 	start steam://launch/250820/VR
 )
 
@@ -101,7 +100,7 @@ if "%steamvrStatus%" == "running" (
 :: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
 :: continue with the script's execution. 
 :: note: this "delayed expansion" business really got me; apparently variables are 
-:: evaluated before execution time unless you do this and then use ! instead of %. craziness.
+:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
 : roomSetupLoop
 echo Waiting for SteamVR to start back up and to close Room Setup...
 setlocal EnableDelayedExpansion
