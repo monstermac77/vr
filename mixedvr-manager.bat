@@ -75,15 +75,15 @@ goto stateChanged
 :: "parameterized" by whatever value is set in steamvrStatus
 :stateChanged
 
-:: toggle lighthouse state
-if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
-echo MixedVR-Manager is turning lighthouses %desiredLighthouseState%...
-lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
-
 :: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
+
+:: toggle lighthouse state
+if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
+echo MixedVR-Manager is turning lighthouses %desiredLighthouseState%...
+lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
 :: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected when SteamVR is opened
@@ -94,35 +94,34 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "steamvr_room_setup.exe"
 	taskkill /f /im "vrmonitor.exe"
 	taskkill /f /im "vrserver.exe"
-	:: TODO: should kill OpenVR space calibrator here too
-	timeout 1 >NUL
+	taskkill /f /im "OpenVR-SpaceCalibrator.exe" 2>NUL
 	start steam://launch/250820/VR
-
-	:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
-	:: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
-	:: continue with the script's execution. 
-	:: note: this "delayed expansion" business is a real treat; apparently variables are 
-	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
-	: roomSetupLoop
-	echo Waiting for SteamVR to start back up and to close Room Setup...
-	setlocal EnableDelayedExpansion
-	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
-		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
-		if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
-		if "!roomSetupStatus!" == "running" (
-			taskkill /f /im "steamvr_room_setup.exe" 
-			goto break
-		) else (
-			timeout 1 >NUL
-		)
-	)
-	:break
 
 ) else (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
 	:: any other applications that won't be shut down automatically, like WMR
 	taskkill /f /im "MixedRealityPortal.exe"
 )
+
+:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
+:: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
+:: continue with the script's execution. 
+:: note: this "delayed expansion" business is a real treat; apparently variables are 
+:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
+: roomSetupLoop
+echo Waiting for SteamVR to start back up and to close Room Setup...
+setlocal EnableDelayedExpansion
+for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
+	tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
+	if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
+	if "!roomSetupStatus!" == "running" (
+		taskkill /f /im "steamvr_room_setup.exe" 
+		goto break
+	) else (
+		timeout 1 >NUL
+	)
+)
+:break
 
 :: mark the new last known state
 set steamvrLastKnownStatus=%steamvrStatus%
