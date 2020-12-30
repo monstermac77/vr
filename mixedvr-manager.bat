@@ -30,11 +30,16 @@ set pollingRate=1
 
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
 :: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
+:: Note: when debugging syntax errors, comment the line at the top of the file
 
 ::::::::::::::::::::::::
 
 
-::: Start of Script :::
+
+::::::::::
+:: main ::
+::::::::::
+
 title MixedVR Manager
 
 :: goto marker (start of loop)
@@ -66,9 +71,13 @@ goto stateChanged
 
 
 
+
+
+
 :::::::::::::::
 :: functions ::
 :::::::::::::::
+
 
 
 :: function that's called when the user has just launched/quit SteamVR
@@ -97,11 +106,29 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "OpenVR-SpaceCalibrator.exe" 2>NUL
 	start steam://launch/250820/VR
 
+	goto roomSetupLoop
+	: roomSetupQuitComplete
+	
 ) else (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
 	:: any other applications that won't be shut down automatically, like WMR
 	taskkill /f /im "MixedRealityPortal.exe"
 )
+
+:: mark the new last known state
+set steamvrLastKnownStatus=%steamvrStatus%
+echo MixedVR-Manager has finished procedure for SteamVR's state changing to: %steamvrStatus%
+
+goto whileTrueLoop
+
+
+
+
+:: this is a function that specifically handles the 
+:: quitting of room setup; although it'd be nice to put this inside
+:: an if statement, apparently I'm not a good enough programmer to do that
+:: withotu a ") was unexpected at this time" from being thrown
+:: TODO: ask around for help getting that working so the code flow is better
 
 :: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
 :: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
@@ -121,15 +148,8 @@ for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 		timeout 1 >NUL
 	)
 )
-:break
-
-:: mark the new last known state
-set steamvrLastKnownStatus=%steamvrStatus%
-echo %steamvrLastKnownStatus%
-
-goto whileTrueLoop
-
-
+: break
+goto roomSetupQuitComplete
 
 
 
