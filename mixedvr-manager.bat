@@ -30,6 +30,7 @@ set pollingRate=1
 
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
 :: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
+:: TODO: minimize WMR immediately 
 :: Note: when debugging syntax errors, comment the line at the top of the file
 
 ::::::::::::::::::::::::
@@ -100,7 +101,7 @@ lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 :: start relying on it being quit when blocking on the next loop
 if "%steamvrStatus%" == "running" (
 	echo MixedVR-Manager is restarting SteamVR so it SteamVR can detect the now powered on lighthouses and HMD.
-	taskkill /f /im "steamvr_room_setup.exe"
+	taskkill /f /im "steamvr_room_setup.exe" 2>NUL
 	taskkill /f /im "vrmonitor.exe"
 	taskkill /f /im "vrserver.exe"
 	taskkill /f /im "OpenVR-SpaceCalibrator.exe" 2>NUL
