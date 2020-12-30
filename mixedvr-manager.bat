@@ -48,12 +48,13 @@ if "%ERRORLEVEL%"=="0" (set steamvrStatus=running) else (set steamvrStatus=quit)
 if "%steamvrLastKnownStatus%" == "" (
 	set steamvrLastKnownStatus=%steamvrStatus%
 	echo Setting inits, at time of script start, SteamVR was %steamvrStatus%
+	echo MixedVR-Manager is now waiting for events...
 	goto whileTrueLoop
 )
 
 :: handle the case where there is no change
 if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
-	timeout %pollingRate%
+	timeout %pollingRate% >NUL
 	goto whileTrueLoop
 )
 
@@ -93,7 +94,7 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "steamvr_room_setup.exe"
 	taskkill /f /im "vrmonitor.exe"
 	taskkill /f /im "vrserver.exe"
-	timeout 1
+	timeout 1 >NUL
 	start steam://launch/250820/VR
 ) else (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
@@ -116,7 +117,7 @@ for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 		taskkill /f /im "steamvr_room_setup.exe" 
 		goto break
 	) else (
-		timeout 1
+		timeout 1 >NUL
 	)
 )
 :break
