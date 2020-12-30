@@ -124,15 +124,20 @@ if "%steamvrStatus%" == "running" (
 			timeout 1 >NUL
 		)
 	)
+	set fileToPlay="setupComplete"
 ) else (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
 	:: any other applications that won't be shut down automatically, like WMR
 	taskkill /f /im "MixedRealityPortal.exe"
+	set fileToPlay="teardownComplete"
 )
 
 :: apparently you can't put markers inside if statements otherwise this would be a "break"
 :: inside the if statement above for better readability....thanks batch
 :roomSetupQuitComplete
+
+:: play a sound to indicate to the user that the operation is complete (parameterized by fileToPlay)
+goto playSound
 
 :: mark the new last known state
 set steamvrLastKnownStatus=%steamvrStatus%
@@ -141,6 +146,21 @@ echo MixedVR-Manager has finished procedure for SteamVR's state changing to: %st
 :: we've done our job, let's return to the main loop now
 goto whileTrueLoop
 
+
+
+
+
+
+:: a function that plays a sound without opening a player
+:playSound
+( echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+  echo Sound.URL = "%fileToPlay%"
+  echo Sound.Controls.play
+  echo do while Sound.currentmedia.duration = 0
+  echo wscript.sleep 100
+  echo loop
+  echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >headlessSound.vbs
+cscript.exe //nologo headlessSound.vbs
 
 
 
