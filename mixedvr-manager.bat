@@ -1,4 +1,4 @@
-@echo off
+::@echo off
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: This script was created for users of MixedVR (see the /r/MixedVR subreddit) by monstermac77
@@ -105,10 +105,8 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "vrserver.exe"
 	taskkill /f /im "OpenVR-SpaceCalibrator.exe" 2>NUL
 	start steam://launch/250820/VR
-
 	goto roomSetupLoop
-	: roomSetupQuitComplete
-	
+	:roomSetupQuitComplete
 ) else (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
 	:: any other applications that won't be shut down automatically, like WMR
@@ -148,7 +146,7 @@ for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 		timeout 1 >NUL
 	)
 )
-: break
+:break
 goto roomSetupQuitComplete
 
 
