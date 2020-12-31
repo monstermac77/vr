@@ -165,18 +165,15 @@ This script manages all of this startup and shutdown for my Reverb G2 + Basestat
 
 This script will:
 
+TODO
+
 * Manage the shutdown/startup of your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs)
 * Disable/re-enable the USB for your headset so you don't have to unplug it every session. This turns off the HP logo on the G2 and will prevent your computer from spending any resources talking to the headset (I found my computer was a bit fritzy when my G2 was not in use and I was just web browsing).
 * Launches/kills SteamVR and WMR, and auto-kills Steam VR Room Setup (much to the relief of [OpenVR Space Calibrator](https://github.com/pushrax/OpenVR-SpaceCalibrator) users)
 
 **Prerequisites**
+* Recommended: Steam should [start on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (this is already its default behavior)
 
-* Download [Lighthouse manager](https://github.com/nouser2013/lighthouse-v2-manager) and place in preferred directory. 
-* Download [USBDeview](https://www.nirsoft.net/utils/usb_devices_view.html) (link at very bottom of page) and place in preferred directory.
-* Download my scripts [startvr.bat](https://github.com/monstermac77/mixed-vr/blob/main/startvr.bat) and [stopvr.bat](https://github.com/monstermac77/mixed-vr/blob/main/stopvr.bat) or just copy and paste their contents into an empty text file and save.
-* Edit my scripts to include your:
-  * Basestations' MAC addresses (just run `lighthouse-v2-manager.exe discover` in the command prompt to figure out what they are)
-  *  Username/path to where you downloaded the files
 
 **Usage**
 * Just click "startvr.bat" or "stopvr.bat". I'll probably add some nice icons eventually.
