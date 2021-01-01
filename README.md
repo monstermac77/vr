@@ -164,7 +164,7 @@ For everyone in VR, but especially those who use devices from different ecosyste
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
 * Seamlessly integrates with SteamVR. All actions are triggered when you launch or quit SteamVR (which can be done by simply turning on an Index controller). 
 * Manages your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs)
-* Manages the USB port for your headset so you don't have to unplug/replug it every session. This turns off the HP logo on the G2 and will prevent your computer from spending any resources talking to the headset (I found my computer was a bit fritzy when my G2 was not in use and I was just web browsing).
+* Manages the USB port for your headset so you don't have to unplug/replug it every session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged). 
 * Manages Windows Mixed Reality portal, in particular quitting it when it should be quit
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
 
