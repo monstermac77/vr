@@ -167,13 +167,19 @@ For everyone in VR, but especially those who use devices from different ecosyste
 * Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
-* (TODO Bonus) Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
+* (Bonus) TODO: Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
 
 **Prerequisites**
 * Highly recommended: Steam should [launch on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (it should already by default)
 * Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Install**
-1) Click here to download the necessary files: https://github.com/monstermac77/vr/archive/main.zip
-2) Input your basestations' MAC addresses (separated by a space) on line 16. Steps to find them if you don't know them are in the preceding lines.
-3) Open and close SteamVR, and pay close attention to the output of MixedVR Manager and make sure the actions it says it's performing are working.
+1) [Click here]() to download the necessary files (place them wherever you'd like). 
+2) Edit line 11 in `config.bat` to be your personal basestations' MAC addresses (steps to determine your MAC addresses are on lines 5-10).
+3) Right click on `mixedvr-manager.exe` and click "Copy".
+4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
+5) Right click inside the window that opens and select "Paste shortcut"
+6) Reboot your computer
+
+**Upgrading**
+* Just replace your mixedvr-manager.exe with the new one.
