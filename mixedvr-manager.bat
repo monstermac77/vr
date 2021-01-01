@@ -71,13 +71,13 @@ goto stateChanged
 :: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
-USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
+bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
 for /L %%i in (1,1,%lighthouseConnectionAttempts%) do (
 	echo MixedVR-Manager is turning lighthouses %desiredLighthouseState%...
-	lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
+	bin\lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 )
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
