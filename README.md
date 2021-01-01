@@ -157,23 +157,21 @@ j) I have not figured out how to get the little tiny icons in desktop Steam to s
 
 k) There is a known issue with the native Steam VR's Google Earth grid icons that I have not been able to override. I've [opened a Github issue](https://github.com/ValveSoftware/openvr/issues/1421).
 
-## Start-up/Shutdown 
+## MixedVR-Manager
 
-For everyone in VR, but especially those folk who use devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)), there is a lot of configuration that needs to be done when you start a VR session. For instance, for Mixed VR setups, the [SteamVR bluetooth settings are disabled](https://www.reddit.com/r/MixedVR/comments/jz967q/unable_to_auto_shutdown_basestations_via_steamvr/), preventing the autostartup and autoshutdown of the basestations when SteamVR is open and quit.
+For everyone in VR, but especially those who use devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)), there is a lot of configuration that needs to be done when you start a VR session. MixedVR-Manager manages all of this for you automatically so that you only ever have to interact with your VR controllers, never your mouse/keyboard, during your VR sessions.
 
-This script manages all of this startup and shutdown for my Reverb G2 + Basestation 2.0 + Knuckle controllers setup, but it should be pretty easily modified to work with _any_ PCVR headset.
+**Features** ((video)[https://www.youtube.com/watch?v=8j3yd5B9If0])
+* Seamlessly integrates with SteamVR. All actions are triggered when you launch or quit SteamVR (which can be done by simply turning on an Index controller). 
+* Manages your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs)
+* Manages the USB port for your headset so you don't have to unplug/replug it every session. This turns off the HP logo on the G2 and will prevent your computer from spending any resources talking to the headset (I found my computer was a bit fritzy when my G2 was not in use and I was just web browsing).
+* Manages Windows Mixed Reality portal, in particular quitting it when it should be quit
+* Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
 
-This script will:
-
-TODO
-
-* Manage the shutdown/startup of your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs)
-* Disable/re-enable the USB for your headset so you don't have to unplug it every session. This turns off the HP logo on the G2 and will prevent your computer from spending any resources talking to the headset (I found my computer was a bit fritzy when my G2 was not in use and I was just web browsing).
-* Launches/kills SteamVR and WMR, and auto-kills Steam VR Room Setup (much to the relief of [OpenVR Space Calibrator](https://github.com/pushrax/OpenVR-SpaceCalibrator) users)
 
 **Prerequisites**
 * Highly recommended: Steam should [launch on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (it should already by default)
 * Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
-**Usage**
+**Install**
 * Just click "startvr.bat" or "stopvr.bat". I'll probably add some nice icons eventually.
