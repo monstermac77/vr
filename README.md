@@ -180,7 +180,7 @@ For everyone in VR, but especially those who use devices from different ecosyste
 3) Right click on `mixedvr-manager.exe` and click "Copy".
 4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
 5) Right click inside the window that opens and select "Paste shortcut"
-6) Reboot your computer
+6) Restart your computer
 
 **Upgrading**
 * Just replace your `mixedvr-manager.exe` with the new one.
