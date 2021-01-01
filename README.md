@@ -163,8 +163,8 @@ For everyone in VR, but especially those who use devices from different ecosyste
 
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
 * Seamlessly integrates with SteamVR. All actions are triggered when you launch or quit SteamVR (which can be done by simply turning on an Index controller). 
-* Manages your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs)
-* Manages the USB port for your headset so you don't have to unplug/replug it every session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged). 
+* Manages your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session)
+* Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
 * (TODO Bonus) Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
