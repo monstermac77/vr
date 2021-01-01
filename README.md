@@ -174,7 +174,8 @@ For everyone in VR, but especially those who use devices from different ecosyste
 * Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Install**
-1) [Click here]() to download the necessary files (place them wherever you'd like). 
+1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`vr.zip`).
+2) Unzip `vr.zip` and place the folder wherever you'd like. 
 2) Edit line 11 in `config.bat` to be your personal basestations' MAC addresses (steps to determine your MAC addresses are on lines 5-10).
 3) Right click on `mixedvr-manager.exe` and click "Copy".
 4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
