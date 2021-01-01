@@ -167,7 +167,7 @@ For everyone in VR, but especially those who use devices from different ecosyste
 * Manages the USB port for your headset so you don't have to unplug/replug it every session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged). 
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
-
+* (TODO Bonus) Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
 
 **Prerequisites**
 * Highly recommended: Steam should [launch on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (it should already by default)
