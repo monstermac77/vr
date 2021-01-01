@@ -174,4 +174,6 @@ For everyone in VR, but especially those who use devices from different ecosyste
 * Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Install**
-* Just click "startvr.bat" or "stopvr.bat". I'll probably add some nice icons eventually.
+1) Click here to download the necessary files: https://github.com/monstermac77/vr/archive/main.zip
+2) Input your basestations' MAC addresses (separated by a space) on line 16. Steps to find them if you don't know them are in the preceding lines.
+3) Open and close SteamVR, and pay close attention to the output of MixedVR Manager and make sure the actions it says it's performing are working.
