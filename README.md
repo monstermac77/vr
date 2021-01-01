@@ -172,8 +172,8 @@ TODO
 * Launches/kills SteamVR and WMR, and auto-kills Steam VR Room Setup (much to the relief of [OpenVR Space Calibrator](https://github.com/pushrax/OpenVR-SpaceCalibrator) users)
 
 **Prerequisites**
-* Recommended: Steam should [start on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (this is already its default behavior)
-* Recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10)
+* Highly recommended: Steam should [start on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (this is already its default behavior)
+* Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10) or if you feel more comfortable, [whitelist just the USBDeview app](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Usage**
 * Just click "startvr.bat" or "stopvr.bat". I'll probably add some nice icons eventually.
