@@ -16,7 +16,7 @@ This is a comprehensive guide to my VR setup, including some descriptions of how
 * [Matching physical space](#matching-physical-space)
 * [Game cross-compatability](#game-cross-compatability)
 * [Perfecting Icons/Artwork for non-Steam games in SteamVR](#perfecting-iconsartwork-for-non-steam-games-in-steamvr)
-* [Start-up/Shutdown](#MixedVR-Manager)
+* [MixedVR-Manager](#MixedVR-Manager)
 
 ## PC Hardware 
 While much of this guide is centered around software, we need to first talk about the hardware that goes into your PC. [PC Part Picker](https://pcpartpicker.com/) is essential in making sure that all of your choices are compatible, so I'd recommend you use it (or something similar).
