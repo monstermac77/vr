@@ -12,8 +12,10 @@
 :::::::: build process ::::::::
 :: just run using the following: https://bat-to-exe-converter-x64.en.softonic.com/
 :: "C:\Users\Joe Puccio\Dropbox\big-bro-peep\steam\nonSteamGameShortcuts\Bat_To_Exe_Converter_x64.exe" /bat Dropbox/big-bro-peep/vr/mixedvr-manager.bat /exe Dropbox/big-bro-peep/vr/mixedvr-manager.exe /invisible
+:: `git tag v1.x`
+:: `git push --tags`
 :: compress "vr" folder as zip
-:: upload it to github as a release
+:: upload it to github as a release for the corresponding tag, edit the details on Github
 :::::::::::::::::::::::::::::::
 
 ::::::::::::
