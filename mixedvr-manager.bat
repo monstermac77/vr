@@ -8,6 +8,7 @@
 :: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
 :: TODO: figure out how to tuck this bat file in a "source" folder so that users only see the vbs and config file
 :: TODO: minimize WMR immediately 
+:: TODO: add a note on the readme that if you're MixedVR in any way and you have to redo its room setup (Oculus, WMR) then you'll have to tweak and resave your chaperone
 :: Note: when debugging syntax errors, comment the line at the top of the file
 
 :::::::: release process ::::::::
