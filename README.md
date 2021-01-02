@@ -189,6 +189,6 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 **Optional Features**
 * Maintaining SteamVR Home
   * Once you have set up your SteamVR Home exactly as you'd like, take off your headset (don't close SteamVR) and copy the `SAVE` folder in `C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\` to the `userdata` directory in MixedVR-Manager. MixedVR-Manager will automatically restore it every time you launch SteamVR. 
-* Maintaining SteamVR Chaperone bounds and playspace
+* Maintaining SteamVR chaperone bounds and playspace
   * It's recommended you use [Chaperone Tweak](https://github.com/Xavr0k/ChaperoneTweak) to make your chaperone match up exactly with your physical space. More information on how to do so can be found in the [Matching Physical Space](#matching-physical-space) section of this guide. Once you've perfected it, take off your headset (don't close SteamVR) and copy the `chaperone_info.vrchap` file in `C:\Program Files (x86)\Steam\config\` to the `userdata` directory in MixedVR-Manager. MixedVR-Manager will automatically restore it every time you launch SteamVR. 
   * Please note that if you're a MixedVR user (e.g. Oculus or WMR HMD) then any time you redo its room setup, you'll have to re-do this process to keep things lined up perfectly.
