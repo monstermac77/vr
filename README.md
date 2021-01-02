@@ -171,7 +171,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * (Upcoming) Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
 
 **Prerequisites**
-* Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
+* Highly recommended: In the Windows settings app "User Account Control Settings" should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Installing**
 1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`Source code.zip`).
