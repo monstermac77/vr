@@ -83,6 +83,15 @@ for /L %%i in (1,1,%lighthouseConnectionAttempts%) do (
 	bin\lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 )
 
+:: restore SteamVR home state (if the user has added SAVE files)
+:: (note: user must have Steam installed on C drive, which is almost always going to be the case)
+if exist userdata\SAVE\save_game_steamvr_home.sav (
+	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
+	for %%f in (userdata\SAVE\*) do (
+		xcopy /y userdata\SAVE\%%f "C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\SAVE"
+	)
+)
+
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
 :: the headset has been enabled, this is because sadly SteamVR requires the headset to be connected when SteamVR is opened
 :: note, we need to kill room setup if it's running because otherwise it may still be open when we 
