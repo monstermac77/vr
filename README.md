@@ -168,7 +168,8 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
-* (Upcoming) Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
+* (Optional) Maintains your SteamVR home so that you can make it perfect once and [not worry about SteamVR deleting it randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
+* (Optional) Maintains your SteamVR chaperone bounds and playspace (size and orientation)
 
 **Prerequisites**
 * Highly recommended: In the Windows settings app "User Account Control Settings" should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
@@ -184,3 +185,11 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 
 **Upgrading**
 * Just replace your `mixedvr-manager.bat` with the new one from the new version and restart your computer.
+
+**Optional Features**
+These are features that are disabled by default, but can be turned on if you need them. 
+* Maintaining SteamVR Home
+  * Once you have set up your SteamVR Home exactly as you'd like, take off your headset (don't close SteamVR) and copy the `SAVE` folder in `C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\` to the `userdata` directory in MixedVR-Manager. MixedVR-Manager will automatically restore it every time you launch SteamVR. 
+* Maintaining SteamVR Chaperone bounds
+  * It's recommended you use [Chaperone Tweak](https://github.com/Xavr0k/ChaperoneTweak) to make your chaperone match up exactly with your physical space. More information on how to do so can be found in the [Matching Physical Space](#matching-physical-space) section of this guide. Once you've perfected it, take off your headset (don't close SteamVR) and copy the `chaperone_info.vrchap` file in `C:\Program Files (x86)\Steam\config\` to the `userdata` directory in MixedVR-Manager. MixedVR-Manager will automatically restore it every time you launch SteamVR. 
+  * Please note that if you're a MixedVR user (e.g. Oculus or WMR HMD) then any time you redo its room setup, you'll have to re-do this process to keep things lined up perfectly.
