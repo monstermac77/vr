@@ -6,12 +6,11 @@
 
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
 :: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
+:: TODO: figure out how to tuck this bat file in a "source" folder so that users only see the vbs and config file
 :: TODO: minimize WMR immediately 
 :: Note: when debugging syntax errors, comment the line at the top of the file
 
-:::::::: build process ::::::::
-:: just run using the following: https://bat-to-exe-converter-x64.en.softonic.com/
-:: "C:\Users\Joe Puccio\Dropbox\big-bro-peep\steam\nonSteamGameShortcuts\Bat_To_Exe_Converter_x64.exe" /bat Dropbox/big-bro-peep/vr/mixedvr-manager.bat /exe Dropbox/big-bro-peep/vr/mixedvr-manager.exe /invisible
+:::::::: release process ::::::::
 :: `git tag v1.x`
 :: `git push --tags`
 :: compress "vr" folder as zip
