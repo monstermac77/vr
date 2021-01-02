@@ -88,7 +88,7 @@ for /L %%i in (1,1,%lighthouseConnectionAttempts%) do (
 if exist userdata\SAVE\save_game_steamvr_home.sav (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
 	for %%f in (userdata\SAVE\*) do (
-		xcopy /y userdata\SAVE\%%f "C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\SAVE"
+		xcopy /y %%f "C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\SAVE"
 	)
 )
 
