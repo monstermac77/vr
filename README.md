@@ -159,7 +159,7 @@ k) There is a known issue with the native Steam VR's Google Earth grid icons tha
 
 ## MixedVR-Manager
 
-Like many people, I just want to get to SteamVR and start playing as quickly as possible. But for many, and especially those who use devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)), there is a lot of configuration that needs to be done every time a VR session is started. 
+Like many people, I just want to get to SteamVR and start playing as quickly as possible. But there is often a lot of configuration that needs to be done every time a VR session is started or stopped, especially for those using devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)).
 
 MixedVR-Manager performs all of this setup for you, automatically and in the background. With MixedVR-Manager, all you need to do is launch SteamVR on your PC (which can be as easy as turning on an Index controller). MixedVR-Manager handles everything else. 
 
