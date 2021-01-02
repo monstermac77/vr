@@ -159,18 +159,18 @@ k) There is a known issue with the native Steam VR's Google Earth grid icons tha
 
 ## MixedVR-Manager
 
-For everyone in VR, but especially those who use devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)), there is a lot of configuration that needs to be done when you start a VR session. MixedVR-Manager manages all of this for you automatically so that you only ever have to interact with your VR controllers, never your mouse/keyboard, during your VR sessions.
+I, like many people, just want to get to SteamVR and start playing as quickly as possible. But for many, and especially those who use devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)), there is a lot of configuration that needs to be done every time they start a VR session. 
+
+MixedVR-Manager performs all of this setup for you, automatically and in the background. With MixedVR-Manager, all you need to do is launch SteamVR on your PC (which can be done by simply turning on an Index controller). MixedVR-Manager handles everything else. 
 
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
-* Seamlessly integrates with SteamVR. All actions are triggered when you launch or quit SteamVR (which can be done by simply turning on an Index controller). 
 * Manages your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session)
 * Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
-* (Bonus) TODO: Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
+* (Upcoming) Maintains your SteamVR home setup and chaperone bounds, so that you can make them perfect once and [not worry about SteamVR deleting them randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
 
 **Prerequisites**
-* Highly recommended: Steam should [launch on start-up](https://support.steampowered.com/kb_article.php?ref=5344-QWBN-3580) (it should already by default)
 * Highly recommended: User Account Control Settings should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Installing**
@@ -183,4 +183,4 @@ For everyone in VR, but especially those who use devices from different ecosyste
 6) Restart your computer
 
 **Upgrading**
-* Just replace your `mixedvr-manager.bat` with the new one.
+* Just replace your `mixedvr-manager.bat` with the new one from the new version and restart your computer.
