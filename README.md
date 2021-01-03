@@ -196,6 +196,6 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 
 **Frequently Asked Questions**
 * What happens if I want to run this script but my headset isn't supported yet?
-  * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it in each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
+  * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
 * What happens if I don't have lighthouses or a PC with Bluetooth? 
   * The script should fail gracefully, meaning that all other features will work.
