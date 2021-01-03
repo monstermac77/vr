@@ -199,3 +199,5 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
   * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
 * What happens if I don't have lighthouses or a PC with Bluetooth? 
   * The script should fail gracefully, meaning that all other features will work.
+* Why isn't MixedVR Manager turning my v1.0 lighthouses on and off like it's supposed to? 
+  * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager. You may need to pair your v1.0 lighthouses with your computer just as you would do with a bluetooth mouse or keyboard. 
