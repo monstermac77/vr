@@ -31,3 +31,12 @@ set lighthouseConnectionAttempts=2
 :: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
 :: sooner after you start/quit SteamVR
 set pollingRate=1
+
+:: steamPath is the directory where you have Steam installed; it's only used for the restoring SteamVR home state and for restoring the chaperone bounds
+:: state, both of which are optional features which are disabled by default, so don't be concerned if this path is wrong if you're not using those features
+set steamPath=C:\Program Files (x86)\Steam
+
+:: steamVRPath is the path to your SteamVR install location, this may be called "SteamVR" or "OpenVR"
+:: and will either appear under your main Steam directory, or your alternate install location
+:: again, just like with the steamPath, don't be concerned if this differs on your system unless you're using the two optional features
+set steamVRPath=%steamPath%\steamapps\common\SteamVR
