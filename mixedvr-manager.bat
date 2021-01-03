@@ -85,7 +85,6 @@ for /L %%i in (1,1,%lighthouseConnectionAttempts%) do (
 )
 
 :: restore SteamVR home state (if the user has added SAVE files)
-:: (note: user must have Steam installed on C drive, which is almost always going to be the case); could add this to the config.bat though
 if exist userdata\SAVE\save_game_steamvr_home.sav (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
 	for %%f in (userdata\SAVE\*) do (
