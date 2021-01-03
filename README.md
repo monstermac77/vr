@@ -169,7 +169,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
 * (Optional) Maintains your SteamVR home so that you can make it perfect once and [not worry about SteamVR deleting it randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
-* (Optional) Maintains your SteamVR chaperone bounds and playspace (size and orientation)
+* (Optional) Maintains your SteamVR chaperone bounds and playspace (both size and orientation)
 
 **Prerequisites**
 * Required: a PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
