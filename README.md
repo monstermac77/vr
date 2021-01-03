@@ -164,7 +164,7 @@ Like many people, I just want to get to SteamVR and start playing as quickly as 
 MixedVR-Manager performs all of this setup for you, automatically and in the background. With MixedVR-Manager, all you need to do is launch SteamVR on your PC (which can be as easy as turning on an Index controller). MixedVR-Manager handles everything else. 
 
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
-* Manages your basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session)
+* Manages your lighthouses, a.k.a basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session)
 * Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
@@ -172,6 +172,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * (Optional) Maintains your SteamVR chaperone bounds and playspace (size and orientation)
 
 **Prerequisites**
+* Required: a PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
 * Highly recommended: In the Windows settings app "User Account Control Settings" should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Installing**
@@ -192,3 +193,9 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * Maintaining SteamVR chaperone bounds and playspace
   * It's recommended you use [Chaperone Tweak](https://github.com/Xavr0k/ChaperoneTweak) to make your chaperone match up exactly with your physical space. More information on how to do so can be found in the [Matching Physical Space](#matching-physical-space) section of this guide. Once you've perfected it, take off your headset (don't close SteamVR) and copy the `chaperone_info.vrchap` file in `C:\Program Files (x86)\Steam\config\` to the `userdata` directory in MixedVR-Manager. MixedVR-Manager will automatically restore it every time you launch SteamVR. 
   * Please note that if you're a MixedVR user (e.g. Oculus or WMR HMD) then any time you redo your HMD's room setup, you'll have to adjust your chaperone and playspace and re-copy the file to keep things lined up perfectly.
+
+**Frequently Asked Questions**
+* What happens if I want to run this script but my headset isn't supported yet?
+  * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it in each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
+* What happens if I don't have lighthouses or a PC with Bluetooth? 
+  * The script should fail gracefully, meaning that all other features will work.
