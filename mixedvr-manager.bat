@@ -80,7 +80,7 @@ bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
 for /L %%i in (1,1,%lighthouseConnectionAttempts%) do (
-	echo MixedVR-Manager is turning %lighthouseVersion% lighthouses %desiredLighthouseState%...
+	echo MixedVR-Manager is turning lighthouses (version %lighthouseVersion%) %desiredLighthouseState%...
 	if "%lighthouseVersion%" == "2.0" (
 		bin\lighthouse-v2-manager.exe %desiredLighthouseState% %lighthouseMACAddressList%
 	)
