@@ -89,14 +89,14 @@ for /L %%i in (1,1,%lighthouseConnectionAttempts%) do (
 if exist userdata\SAVE\save_game_steamvr_home.sav (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
 	for %%f in (userdata\SAVE\*) do (
-		xcopy /y %%f "C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\SAVE"
+		xcopy /y %%f "%steamVrPath%\tools\steamvr_environments\game\steamtours\SAVE"
 	)
 )
 
 :: restore SteamVR chaperone bounds state (if the user has added chaperone_info.vrchap)
 if exist userdata\chaperone_info.vrchap (
 	echo MixedVR-Manager is overwriting the existing SteamVR chaperone bounds with the user specified chaperone bounds...
-	xcopy /y userdata\chaperone_info.vrchap "C:\Program Files (x86)\Steam\config"
+	xcopy /y userdata\chaperone_info.vrchap "%steamPath%\config"
 )
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 

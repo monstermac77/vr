@@ -28,3 +28,11 @@ set lighthouseConnectionAttempts=2
 :: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
 :: sooner after you start/quit SteamVR
 set pollingRate=1
+
+:: steamPath is the path to your Steam install location, this is typically located in
+:: C:\Program Files (x86)\Steam
+set steamPath=C:\Program Files (x86)\Steam
+
+:: steamVrPath is the path to your SteamVR install location, this may be called "SteamVR" or "OpenVR"
+:: and will either appear under your main Steam directory, or your alternate install location
+set steamVrPath=C:\Program Files (x86)\Steam\steamapps\common\SteamVR
