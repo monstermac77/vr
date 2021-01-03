@@ -185,7 +185,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 6) Restart your computer
 
 **Upgrading**
-* Just replace your `mixedvr-manager.bat` with the new one from the new version and restart your computer.
+* Just replace your `mixedvr-manager.bat` with the one from the new version and restart your computer.
 
 **Optional Features**
 * Maintaining SteamVR Home
