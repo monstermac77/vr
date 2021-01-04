@@ -178,7 +178,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 **Installing**
 1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`Source code.zip`).
 2) Unzip `vr-[version].zip` and place the folder wherever you'd like. 
-2) Edit line 11 in `config.bat` to be your personal basestations' MAC addresses and line 14 to be the version of your basestations (steps to determine your MAC addresses are on lines 5-10).
+2) Edit line 12 in `config.bat` to be your personal basestations' MAC addresses and line 15 to be the version of your basestations (steps to determine your MAC addresses are on lines 5-11).
 3) Right click on `mixedvr-manager-launcher.vbs` and click "Copy".
 4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
 5) Right click inside the window that was opened and select "Paste shortcut"
