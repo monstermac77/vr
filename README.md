@@ -172,13 +172,13 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * Maintains your SteamVR chaperone bounds and playspace (both size and orientation)
 
 **Prerequisites**
-* Required: a PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
-* Highly recommended: In the Windows settings app "User Account Control Settings" should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
+* A PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
+* In the Windows "Settings" app, be sure "User Account Control Settings" is set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966) just USBDeview.
 
 **Installing**
 1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`Source code.zip`).
 2) Unzip `vr-[version].zip` and place the folder wherever you'd like. 
-2) Edit line 11 in `config.bat` to be your personal basestations' MAC addresses and line 14 to be the version of your basestations (steps to determine your MAC addresses are on lines 5-10).
+2) Edit line 12 in `config.bat` to be your personal basestations' MAC addresses and line 15 to be the version of your basestations (steps to determine your MAC addresses are on lines 5-11).
 3) Right click on `mixedvr-manager-launcher.vbs` and click "Copy".
 4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
 5) Right click inside the window that was opened and select "Paste shortcut"
@@ -199,8 +199,13 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
   * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
 * What happens if I don't have lighthouses or a PC with Bluetooth? 
   * The script should fail gracefully, meaning that all other features will work.
+* Why isn't the `discover` command to determine the MAC address of my v1.0 lighthouses working? 
+  * The v1.0 lighthouses seem to be less reliable at discovery than the v2.0 lighthouses. You may have to run the discover command several times, perhaps with a reboot thrown in between, to figure out the MAC addresses.
 * Why isn't MixedVR Manager turning my v1.0 lighthouses on and off like it's supposed to? 
-  * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager. You may need to pair your v1.0 lighthouses with your computer just as you would do with a bluetooth mouse or keyboard. 
+  * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager on your PC. If it doesn't you may need to use a different Bluetooth driver (ideally, you should be using the Windows bluetooth driver). 
+* Why isn't MixedVR Manager starting when my computer boots up? 
+  * If this is happening, try double clicking the `mixedvr-manager-launcher.vbs` file and see if a window pops up saying "Do you want to open this file?". If it does, uncheck the "Always ask before opening this file" prompt, and then restart your computer. 
+  
 
 **Acknowledgements**
 
