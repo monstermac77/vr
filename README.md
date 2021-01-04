@@ -164,7 +164,7 @@ Like many people, I just want to get to SteamVR and start playing as quickly as 
 MixedVR-Manager performs all of this setup for you, automatically and in the background. With MixedVR-Manager, all you need to do is launch SteamVR on your PC (which can be as easy as turning on an Index controller). MixedVR-Manager handles everything else. 
 
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
-* Manages your lighthouses, a.k.a basestations (so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session)
+* Manages your lighthouses (a.k.a basestations) so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session. Supports all lighthouse versions (v1.0 and v2.0).
 * Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
 * Manages Windows Mixed Reality portal, in particular killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
@@ -199,3 +199,5 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
   * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
 * What happens if I don't have lighthouses or a PC with Bluetooth? 
   * The script should fail gracefully, meaning that all other features will work.
+* Why isn't MixedVR Manager turning my v1.0 lighthouses on and off like it's supposed to? 
+  * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager. You may need to pair your v1.0 lighthouses with your computer just as you would do with a bluetooth mouse or keyboard. 
