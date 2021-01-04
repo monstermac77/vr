@@ -14,8 +14,7 @@
 :::::::: release process ::::::::
 :: `git tag v1.x`
 :: `git push --tags`
-:: compress "vr" folder as zip
-:: upload it to github as a release for the corresponding tag, edit the details on Github
+:: go to github and edit the release details
 :::::::::::::::::::::::::::::::
 
 ::::::::::::
