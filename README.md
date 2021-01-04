@@ -203,6 +203,8 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
   * The v1.0 lighthouses seem to be less reliable at discovery than the v2.0 lighthouses. You may have to run the discover command several times, perhaps with a reboot thrown in between, to figure out the MAC addresses.
 * Why isn't MixedVR Manager turning my v1.0 lighthouses on and off like it's supposed to? 
   * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager on your PC. If it doesn't you may need to use a different Bluetooth driver (ideally, you should be using the Windows bluetooth driver). 
+* Why isn't MixedVR Manager starting when my computer boots up? 
+  * If this is happening, try double clicking the `mixedvr-manager-launcher.vbs` file and see if a window pops up saying "Do you want to open this file?". If it does, uncheck the "Always ask before opening this file" prompt, and then restart your computer. 
   
 
 **Acknowledgements**
