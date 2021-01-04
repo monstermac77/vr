@@ -199,14 +199,14 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
   * The script should be able to perform all of the other functions except it won't enable/disable your HMD, so you'll have to unplug/replug it each session if you want it powered off when not in use. That said, adding support for HMDs only takes me about 10 minutes, so please open an issue by clicking [here](https://github.com/monstermac77/vr/issues/new) and I'll add support for you!
 * What happens if I don't have lighthouses or a PC with Bluetooth? 
   * The script should fail gracefully, meaning that all other features will work.
-* Why isn't the `discover` command to determine the MAC address of my v1.0 lighthouses working? 
-  * The v1.0 lighthouses seem to be less reliable at discovery than the v2.0 lighthouses. You may have to run the discover command several times, perhaps with a reboot thrown in between, to figure out the MAC addresses.
+* Why isn't the `discover` command able to determine the MAC addresses of my v1.0 lighthouses? 
+  * The v1.0 lighthouses seem to be less reliable at discovery than the v2.0 lighthouses. You may have to run the discover command several times, perhaps with a reboot thrown in between, to figure out the MAC addresses. During the discovery process, once you see a pop-up that says "Add a device", click that and let it pair. Continue for each basestation.
 * Why isn't MixedVR Manager turning my v1.0 lighthouses on and off like it's supposed to? 
-  * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager on your PC. If it doesn't you may need to use a different Bluetooth driver (ideally, you should be using the Windows bluetooth driver). 
+  * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover` (then refer to the question above). If the output repeatedly says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager on your PC. If it doesn't, you should uninstall all Bluetooth drivers that you may have installed since they usually cause this error; in general you [should only use](https://www.reddit.com/r/windows/comments/7zqktf/need_help_with_bluetooth/duqlnrz/) the Windows bluetooth driver. 
 * Why isn't MixedVR Manager starting when my computer boots up? 
-  * If this is happening, try double clicking the `mixedvr-manager-launcher.vbs` file and see if a window pops up saying "Do you want to open this file?". If it does, uncheck the "Always ask before opening this file" prompt, and then restart your computer. 
+  * If this is happening, try double clicking the `mixedvr-manager-launcher.vbs` file and see if a window pops up saying "Do you want to open this file?". If it does, uncheck the "Always ask before opening this file" prompt, click "Open", and then restart your computer. 
   
 
 **Acknowledgements**
 
-Thank you so much to [Tetracyclic](https://www.reddit.com/user/Tetracyclic) for getting this working with V1 lighthouses and [PumpkinSpice](https://www.reddit.com/user/PumkinSpiceTrukNuts) for a lot of testing and debugging.
+Thank you so much to [Tetracyclic](https://www.reddit.com/user/Tetracyclic) for adding support for V1 lighthouses and [PumpkinSpice](https://www.reddit.com/user/PumkinSpiceTrukNuts) for a lot of testing and debugging.
