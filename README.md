@@ -201,3 +201,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
   * The script should fail gracefully, meaning that all other features will work.
 * Why isn't MixedVR Manager turning my v1.0 lighthouses on and off like it's supposed to? 
   * To determine what the issue is, open up "Command Prompt" and input `C:\..\vr\bin\lighthouse-v1-manager.exe discover`. If the output says "no suitable lighthouses found", make sure that Bluetooth LE shows up in Device Manager. You may need to pair your v1.0 lighthouses with your computer just as you would do with a bluetooth mouse or keyboard. 
+
+**Acknowledgements**
+
+Thank you so much to [Tetracyclic](https://www.reddit.com/user/Tetracyclic) for getting this working with V1 lighthouses.
