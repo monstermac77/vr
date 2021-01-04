@@ -204,4 +204,4 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 
 **Acknowledgements**
 
-Thank you so much to [Tetracyclic](https://www.reddit.com/user/Tetracyclic) for getting this working with V1 lighthouses.
+Thank you so much to [Tetracyclic](https://www.reddit.com/user/Tetracyclic) for getting this working with V1 lighthouses and PumpkinSpice for a lot of testing and debugging.
