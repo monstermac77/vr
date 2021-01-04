@@ -145,6 +145,7 @@ if "%steamvrStatus%" == "running" (
 :: mark the new last known state
 set steamvrLastKnownStatus=%steamvrStatus%
 echo MixedVR-Manager has finished procedure for SteamVR's state changing to: %steamvrStatus%
+echo MixedVR-Manager is now waiting for events...
 
 :: we've done our job, let's return to the main loop now
 goto whileTrueLoop

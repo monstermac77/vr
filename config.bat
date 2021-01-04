@@ -8,6 +8,7 @@
 :: 1. Open up "Command Prompt"
 :: 2. Navigate to this directory, e.g. `cd C:\Users\Joe Puccio\Dropbox\big-bro-peep\vr\bin\`
 :: 3. Run `lighthouse-v2-manager.exe discover` (if you have 1.0 basestations, change the 2 to a 1)
+:: Note: if you have 1.0 basestations, you may have to run the discover command 4 or 5 times before you get both MAC addresses
 set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 
 :: specify what version of lighthouses (a.k.a basestations) you're using, 2.0 or 1.0
