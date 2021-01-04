@@ -172,8 +172,8 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 * Maintains your SteamVR chaperone bounds and playspace (both size and orientation)
 
 **Prerequisites**
-* Required: a PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
-* Highly recommended: In the Windows settings app "User Account Control Settings" should be set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
+* A PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
+* In the Windows "Settings" app, be sure "User Account Control Settings" is set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist just USBDeview](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966).
 
 **Installing**
 1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`Source code.zip`).
