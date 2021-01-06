@@ -22,12 +22,6 @@ set lighthouseVersion=2.0
 :: when you start VR, that could be because this value is too low.
 set maxWaitTimeForRoomSetup=60
 
-:: lighthouseAttempts is how many times this script should try to send "on" and "off" commands to the lighthouses
-:: if you are constantly having an issue where one lighthouse turns off or on and the other doesn't you should raise this value
-:: if you want to start / stop your VR sessions faster, you can try lowering this to 1, but we've found 
-:: two is the minimum for the lighthouses to turn on/off
-set lighthouseConnectionAttempts=2
-
 :: pollingRate is how often (in seconds) this script will check to see if SteamVR has started running
 :: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
 :: sooner after you start/quit SteamVR
