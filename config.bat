@@ -35,3 +35,7 @@ set steamPath=C:\Program Files (x86)\Steam
 :: and will either appear under your main Steam directory, or your alternate install location
 :: again, just like with the steamPath, don't be concerned if this differs on your system unless you're using the two optional features
 set steamVRPath=%steamPath%\steamapps\common\SteamVR
+
+:: if USB Deview has been whitelisted in UAC by creating a shortcut, replace the below path
+:: to the shortcut (including the .lnk extension)
+set usbDeviewPath=bin\USBDeview.exe
