@@ -77,7 +77,6 @@ goto stateChanged
 :: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
-:: bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 "%usbDeviewPath%" /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
 :: toggle lighthouse state
