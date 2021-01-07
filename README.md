@@ -185,9 +185,6 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 5) Right click inside the window that was opened and select "Paste shortcut"
 6) Restart your computer
 
-**Upgrading**
-* Just replace your `mixedvr-manager.bat` with the one from the new version and restart your computer.
-
 **Optional Features**
 * Maintaining SteamVR Home
   * Once you have set up your SteamVR Home exactly as you'd like, take off your headset (don't close SteamVR) and copy the `SAVE` folder in `C:\Program Files (x86)\Steam\steamapps\common\SteamVR\tools\steamvr_environments\game\steamtours\` to the `userdata` directory in MixedVR-Manager. MixedVR-Manager will automatically restore it every time you launch SteamVR. 
