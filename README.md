@@ -182,7 +182,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 2) Edit line 12 in `config.bat` to be your personal basestations' MAC addresses and line 15 to be the version of your basestations (steps to determine your MAC addresses are on lines 5-11).
 3) Right click on `mixedvr-manager-launcher.vbs` and click "Copy".
 4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
-5) Right click inside the window that was opened and select "Paste shortcut"
+5) Right click inside the window that was opened and select "Paste **shortcut**"
 6) Restart your computer
 
 **Optional Features**
