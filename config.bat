@@ -20,7 +20,7 @@ set lighthouseVersion=2.0
 :: and then manually start it from the SteamVR status window. This script will only ever kill it 
 :: once per VR session. If you're getting a loop where your basestations turn on and then off
 :: when you start VR, that could be because this value is too low.
-set maxWaitTimeForRoomSetup=60
+set maxWaitTimeForRoomSetup=90
 
 :: pollingRate is how often (in seconds) this script will check to see if SteamVR has started running
 :: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
