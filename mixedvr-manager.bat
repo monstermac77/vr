@@ -13,7 +13,7 @@
 :: TODO: make a note in the readme that sometimes steam decides to create multiple chaperone universes, it's best to delete all but one and save that one
 
 :: Notes for debugging: 
-:: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output
+:: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output (never click in the window, just do command+tab)
 :: * When debugging syntax errors, comment the line at the top of the file
 
 :::::::: release process ::::::::
