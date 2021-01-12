@@ -10,6 +10,7 @@
 :: TODO: minimize WMR immediately 
 :: TODO: Tetracyclic should make it so that lighthouse-keeper has its own config file that it automatically populates with the MAC addresses; it automatically runs "discover" on first run, and populates this, so the user doesn't have to do this setup
 :: TODO: Tetracyclic, in addition to above, should detect what version of lighthouses they have
+:: TODO: provide instructions or a config so that you can enable the headset if you don't want to continue using mixedvr manager, at least for a while (show how to use usbdeview)
 :: TODO: submit our files to Microsoft for approval: https://www.microsoft.com/en-us/wdsi/filesubmission
 :: TODO: make a note in the readme that sometimes steam decides to create multiple chaperone universes, it's best to delete all but one and save that one
 :: Note: when debugging syntax errors, comment the line at the top of the file
@@ -76,6 +77,8 @@ goto stateChanged
 
 :: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
+:: override if the user doesn't want this feature or wants it temporarily disabled
+if "%disableHMD%" == "false" (set desiredHMDUSBAction=enable)
 echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 "%usbDeviewPath%" /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
