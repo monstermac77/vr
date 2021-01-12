@@ -21,11 +21,6 @@
 :: go to github and edit the release details
 :::::::::::::::::::::::::::::::
 
-::::::::::::
-:: config ::
-::::::::::::
-call config.bat
-
 
 ::::::::::
 :: main ::
@@ -35,6 +30,9 @@ title MixedVR Manager
 
 :: goto marker (start of loop)
 :whileTrueLoop 
+
+:: calling config here, which allows hotswapping of configurations
+call config.bat
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
 tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
@@ -78,7 +76,7 @@ goto stateChanged
 :: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 :: override if the user doesn't want this feature or wants it temporarily disabled
-if "%disableHMD%" == "false" (set desiredHMDUSBAction=enable)
+if "%allowHMDToBeDisabled%" == "false" (set desiredHMDUSBAction=enable)
 echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 "%usbDeviewPath%" /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
