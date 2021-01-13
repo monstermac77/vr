@@ -5,14 +5,16 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
-:: TODO: users may want to disable certain features, not everyone might want the port disabled/enabled
 :: TODO: figure out how to tuck this bat file in a "source" folder so that users only see the vbs and config file
 :: TODO: minimize WMR immediately 
 :: TODO: Tetracyclic should make it so that lighthouse-keeper has its own config file that it automatically populates with the MAC addresses; it automatically runs "discover" on first run, and populates this, so the user doesn't have to do this setup
 :: TODO: Tetracyclic, in addition to above, should detect what version of lighthouses they have
 :: TODO: submit our files to Microsoft for approval: https://www.microsoft.com/en-us/wdsi/filesubmission
 :: TODO: make a note in the readme that sometimes steam decides to create multiple chaperone universes, it's best to delete all but one and save that one
-:: Note: when debugging syntax errors, comment the line at the top of the file
+
+:: Notes for debugging: 
+:: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output (never click in the window, just do command+tab)
+:: * When debugging syntax errors, comment the line at the top of the file
 
 :::::::: release process ::::::::
 :: `git tag v1.x`
@@ -20,11 +22,14 @@
 :: go to github and edit the release details
 :::::::::::::::::::::::::::::::
 
+<<<<<<< HEAD:bin/mixedvr-manager.bat
 ::::::::::::
 :: config ::
 ::::::::::::
 call ../config.bat
 
+=======
+>>>>>>> upstream/main:mixedvr-manager.bat
 
 ::::::::::
 :: main ::
@@ -34,6 +39,9 @@ title MixedVR Manager
 
 :: goto marker (start of loop)
 :whileTrueLoop 
+
+:: calling config here, which allows hotswapping of configurations
+call config.bat
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
 tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
@@ -74,11 +82,22 @@ goto stateChanged
 :: "parameterized" by whatever value is set in steamvrStatus
 :stateChanged
 
-:: toggle state of the USB that the headset is plugged into
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
+<<<<<<< HEAD:bin/mixedvr-manager.bat
 echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 
+=======
+setlocal EnableDelayedExpansion
+:: allow this feature to be skipped if the user desires
+if "%allowHMDToBeDisabled%" == "true" (
+	:: toggle state of the USB that the headset is plugged into
+	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
+	bin\USBDeview.exe /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
+) else (
+	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
+)
+>>>>>>> upstream/main:mixedvr-manager.bat
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
@@ -122,7 +141,7 @@ if "%steamvrStatus%" == "running" (
 	:: continue with the script's execution. 
 	:: note: this "delayed expansion" business really got me; apparently variables are 
 	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
-	echo Waiting for SteamVR to start back up and to close Room Setup...
+	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to %maxWaitTimeForRoomSetup% seconds...
 	setlocal EnableDelayedExpansion
 	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL

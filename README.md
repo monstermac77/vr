@@ -96,7 +96,7 @@ Although different hardware may use the same medium, their application of that m
 * Some HMDs use cameras placed on the HMD to identify landmarks in physical space (such as the corner of a door, or the edge of a carpet) to create a 3D map of landmarks (via physical light). As the user moves around in physical space, software is used to calculate the user's position in physical space based on what the cameras can see. These calculations are then translated to movement in virtual space. This is known as "inside-out tracking", which uses a Simultaneous Location And Mapping (SLAM) algorithm to determine position.
 * Some controllers emit visible light from the controllers. The cameras on the HMD then track this visual light to calculate the controllers' position relative to the HMD, and therefore can infer its position in physical space. 
 * Some controllers emit infrared light from the controllers. The cameras on the HMD then track this infrared light in the same way the HMDs track controllers using visible light above. 
-* Some systems use extra devices called Lighthouses or Basestations. These devices remain stationary in the room at all times and do not communicate with your computer, HMD, or controllers. Much like actual lighthouses, these devices simply emit sweeping beams of IR at regular intervals across your room. Controllers and HMDs tracked by this method are scattered with small openings in the casing that allow the IR to penetrate and hit IR photodiodes (sensors that are sensitive to IR light) embedded into the device. By measuring the time between activations of these photodiodes, the device itself can deduce its position and orientation in space with trivial calculation.
+* Some systems use extra devices called Lighthouses or Basestations. These devices remain stationary in the room at all times and do not communicate with your computer, HMD, or controllers. Much like actual lighthouses, these devices simply emit sweeping beams of IR at regular intervals across your room. Controllers and HMDs tracked by this method are scattered with small openings in the casing that allow the IR to penetrate and hit IR photodiodes (sensors that are sensitive to IR light) embedded into the device. By measuring the time between activations of these photodiodes, the device itself can deduce its position and orientation in space with trivial calculation. A great overview of Lighthouses can be found [here](https://youtu.be/xrsUMEbLtOs) where the original designer discusses how they work and eludes to some interesting facts, such as it being possible to achieve a 20 meter range with them (rather than ~5 meters). 
 
 There is plenty of [good discussion](https://venturebeat.com/2019/05/05/how-virtual-reality-positional-tracking-works/) comparing tracking mechanisms, but I do want to highlight one very troubling downside to a visible light approach to track both the HMD and controllers in the same setup: since too much environmental light means the HMD will not be able to accurately track the position of the controllers, but too little environmental light means that the HMD will not be able to identify landmarks in physical space, environmental lighting must be controllable in both directions to achieve acceptable tracking; this is a downside that no other method experiences.
 
@@ -173,7 +173,9 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 
 **Prerequisites**
 * A PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
-* In the Windows "Settings" app, be sure "User Account Control Settings" is set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). If doing so makes you uncomfortable, [whitelist](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966) just USBDeview.
+* In the Windows "Settings" app, be sure "User Account Control Settings" is set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). 
+  * If you'd rather keep these dialogs on for other apps, you can skip this prerequisite. Instead, just click "Yes" on the dialog every time it comes up OR set `allowHMDToBeDisabled` to `false` in `config.bat`. 
+  * Please help us figure out [this issue](https://github.com/monstermac77/vr/issues/7) so we can eliminate this prerequisite. 
 
 **Installing**
 1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`Source code.zip`).
@@ -181,11 +183,12 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 2) Edit line 12 in `config.bat` to be your personal basestations' MAC addresses and line 15 to be the version of your basestations (steps to determine your MAC addresses are on lines 5-11).
 3) Right click on `mixedvr-manager-launcher.vbs` and click "Copy".
 4) Press the `Windows logo key + R`, type `shell:startup`, and click "Ok".
-5) Right click inside the window that was opened and select "Paste shortcut"
+5) Right click inside the window that was opened and select "Paste shortcut" (**not** "Paste"!).
 6) Restart your computer
 
-**Upgrading**
-* Just replace your `mixedvr-manager.bat` with the one from the new version and restart your computer.
+**Usage**
+* Start-up: Turn on an Index controller. Wait for SteamVR to automatically launch, quit, then launch again. 
+* Shutdown: Exit SteamVR from within your HMD.
 
 **Optional Features**
 * Maintaining SteamVR Home
