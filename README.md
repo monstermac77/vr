@@ -187,7 +187,8 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 6) Restart your computer
 
 **Usage**
-* Just turn on an Index controller. SteamVR will launch, quit, then launch again with everything configured.
+* Start-up: Turn on an Index controller. Wait for SteamVR to automatically launch, quit, then launch again. 
+* Shutdown: Exit SteamVR from within your HMD. Wait for SteamVR to quit.
 
 **Optional Features**
 * Maintaining SteamVR Home
