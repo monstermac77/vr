@@ -174,7 +174,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 **Prerequisites**
 * A PC with Bluetooth built in or a Bluetooth dongle (your Vive dongle will not work)
 * In the Windows "Settings" app, be sure "User Account Control Settings" is set to ["Never notify"](https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10). 
-  * Note: if doing this makes you uncomfortable, [whitelist](https://lifehacker.com/how-to-eliminate-uac-prompts-for-specific-applications-493128966) just USBDeview and modify `usbDeviewPath` in `config.bat`.
+  * Note: if you'd rather keep these dialogs on for other apps, temporarily set `allowHMDToBeDisabled` to `false` in `config.bat` and help us figure out [this issue](https://github.com/monstermac77/vr/issues/7) so we can get things working without setting the global setting to "Never Notify".
 
 **Installing**
 1) [Click here](https://github.com/monstermac77/vr/releases/latest) to download the latest release (`Source code.zip`).
