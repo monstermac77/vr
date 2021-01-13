@@ -36,10 +36,6 @@ set steamPath=C:\Program Files (x86)\Steam
 :: again, just like with the steamPath, don't be concerned if this differs on your system unless you're using the two optional features
 set steamVRPath=%steamPath%\steamapps\common\SteamVR
 
-:: if USB Deview has been whitelisted in UAC by creating a shortcut, replace change the path below
-:: to be the the path to the shortcut (including the .lnk extension)
-set usbDeviewPath=bin\USBDeview.exe
-
 :: if you don't want your HMD to be disabled, either because you'd rather it stay on all the time, because 
 :: you need to keep it on to test something, or you have a configuration that requires it to be on, set this to false
 set allowHMDToBeDisabled=true
