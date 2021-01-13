@@ -79,7 +79,7 @@ setlocal EnableDelayedExpansion
 :: allow this feature to be skipped if the user desires
 if "%allowHMDToBeDisabled%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
-	echo MixedVR-Manager is changing state of USB device (the HMD) to /!desiredHMDUSBAction!...
+	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
 	bin\USBDeview.exe /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
 ) else (
 	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
