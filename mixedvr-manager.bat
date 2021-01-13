@@ -74,12 +74,13 @@ goto stateChanged
 :: "parameterized" by whatever value is set in steamvrStatus
 :stateChanged
 
-:: override if the user doesn't want this feature or wants it temporarily disabled
+if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
+setlocal EnableDelayedExpansion
+:: allow this feature to be skipped if the user desires
 if "%allowHMDToBeDisabled%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
-	if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
-	echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
-	bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
+	echo MixedVR-Manager is changing state of USB device (the HMD) to /!desiredHMDUSBAction!...
+	bin\USBDeview.exe /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
 ) else (
 	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
 )
