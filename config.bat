@@ -20,7 +20,7 @@ set lighthouseVersion=2.0
 :: and then manually start it from the SteamVR status window. This script will only ever kill it 
 :: once per VR session. If you're getting a loop where your basestations turn on and then off
 :: when you start VR, that could be because this value is too low.
-set maxWaitTimeForRoomSetup=60
+set maxWaitTimeForRoomSetup=90
 
 :: pollingRate is how often (in seconds) this script will check to see if SteamVR has started running
 :: so it can perform its actions; more frequent polling will use more CPU, but the actions will trigger
@@ -36,6 +36,6 @@ set steamPath=C:\Program Files (x86)\Steam
 :: again, just like with the steamPath, don't be concerned if this differs on your system unless you're using the two optional features
 set steamVRPath=%steamPath%\steamapps\common\SteamVR
 
-:: if USB Deview has been whitelisted in UAC by creating a shortcut, replace change the path below
-:: to be the the path to the shortcut (including the .lnk extension)
-set usbDeviewPath=bin\USBDeview.exe
+:: if you don't want your HMD to be disabled, either because you'd rather it stay on all the time, because 
+:: you need to keep it on to test something, or you have a configuration that requires it to be on, set this to false
+set allowHMDToBeDisabled=true
