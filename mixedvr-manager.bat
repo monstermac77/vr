@@ -123,7 +123,7 @@ if "%steamvrStatus%" == "running" (
 	:: continue with the script's execution. 
 	:: note: this "delayed expansion" business really got me; apparently variables are 
 	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
-	echo Waiting for SteamVR to start back up and to close Room Setup...
+	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to %maxWaitTimeForRoomSetup% seconds...
 	setlocal EnableDelayedExpansion
 	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
