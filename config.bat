@@ -6,8 +6,8 @@
 :: If you have an Android device, you can downnload the "Lighthouse Power Management" app to find the MAC addresses: https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm
 :: Alternatively, you can:
 :: 1. Open up "Command Prompt"
-:: 2. Navigate to the directory this config file is in, e.g. `cd C:\vr\`
-:: 3. Run `.\bin\lighthouse-keeper.exe discover`
+:: 2. Navigate to the directory this config file is in, e.g. `cd C:\Users\Joe Puccio\Dropbox\big-bro-peep\vr\bin\`
+:: 3. Run `lighthouse-keeper.exe discover`
 :: Note: you may have to run the discover command several times before you get both MAC addresses
 set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 
