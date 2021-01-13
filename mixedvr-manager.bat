@@ -81,7 +81,7 @@ if "%allowHMDToBeDisabled%" == "true" (
 	echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
 	bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
 ) else (
-	echo MixedVR-Manager is skipping enabling/disabling the HMD, per user's configuration
+	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
 )
 
 :: toggle lighthouse state
