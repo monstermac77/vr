@@ -22,14 +22,6 @@
 :: go to github and edit the release details
 :::::::::::::::::::::::::::::::
 
-<<<<<<< HEAD:bin/mixedvr-manager.bat
-::::::::::::
-:: config ::
-::::::::::::
-call ../config.bat
-
-=======
->>>>>>> upstream/main:mixedvr-manager.bat
 
 ::::::::::
 :: main ::
@@ -41,7 +33,7 @@ title MixedVR Manager
 :whileTrueLoop 
 
 :: calling config here, which allows hotswapping of configurations
-call config.bat
+call ../config.bat
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
 tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
@@ -83,11 +75,6 @@ goto stateChanged
 :stateChanged
 
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
-<<<<<<< HEAD:bin/mixedvr-manager.bat
-echo MixedVR-Manager is changing state of USB device (the HMD) to /%desiredHMDUSBAction%...
-bin\USBDeview.exe /RunAsAdmin /%desiredHMDUSBAction% "HoloLens Sensors"
-
-=======
 setlocal EnableDelayedExpansion
 :: allow this feature to be skipped if the user desires
 if "%allowHMDToBeDisabled%" == "true" (
@@ -97,7 +84,6 @@ if "%allowHMDToBeDisabled%" == "true" (
 ) else (
 	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
 )
->>>>>>> upstream/main:mixedvr-manager.bat
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
