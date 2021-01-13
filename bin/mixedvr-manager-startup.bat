@@ -1,3 +1,5 @@
 @echo off
 
-cscript.exe mixedvr-manager-launcher.vbs
+set FilePath=%1
+
+"%FilePath%\bin\mixedvr-manager-launcher.vbs"
