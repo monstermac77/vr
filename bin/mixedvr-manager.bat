@@ -23,7 +23,7 @@
 ::::::::::::
 :: config ::
 ::::::::::::
-call config.bat
+call ../config.bat
 
 
 ::::::::::
