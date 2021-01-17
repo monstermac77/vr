@@ -29,11 +29,14 @@
 
 title MixedVR Manager
 
+:: get working directory for runtime file
+set mvrmDir=%~dp0
+
 :: goto marker (start of loop)
-:whileTrueLoop 
+:whileTrueLoop
 
 :: calling config here, which allows hotswapping of configurations
-call ../config.bat
+call "%mvrmDir%..\config.bat"
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
 tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
@@ -80,7 +83,7 @@ setlocal EnableDelayedExpansion
 if "%allowHMDToBeDisabled%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
 	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
-	bin\USBDeview.exe /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
+	"%mvrmDir%USBDeview.exe" /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
 ) else (
 	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
 )
@@ -89,15 +92,15 @@ if "%allowHMDToBeDisabled%" == "true" (
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
 echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
 if "%lighthouseVersion%" == "2.0" (
-	bin\lighthouse-keeper.exe 2 %desiredLighthouseState% %lighthouseMACAddressList%
+	"%mvrmDir%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
 )
 if "%lighthouseVersion%" == "1.0" (
-	bin\lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
+	"%mvrmDir%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
 )
 
 
 :: restore SteamVR home state (if the user has added SAVE files)
-if exist userdata\SAVE\save_game_steamvr_home.sav (
+if exist "%mvrmDir%..\userdata\SAVE\save_game_steamvr_home.sav" (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
 	for %%f in (userdata\SAVE\*) do (
 		xcopy /y %%f "%steamVRPath%\tools\steamvr_environments\game\steamtours\SAVE"
@@ -105,9 +108,9 @@ if exist userdata\SAVE\save_game_steamvr_home.sav (
 )
 
 :: restore SteamVR chaperone bounds state (if the user has added chaperone_info.vrchap)
-if exist userdata\chaperone_info.vrchap (
+if exist "%mvrmDir%..\userdata\chaperone_info.vrchap" (
 	echo MixedVR-Manager is overwriting the existing SteamVR chaperone bounds with the user specified chaperone bounds...
-	xcopy /y userdata\chaperone_info.vrchap "%steamPath%\config"
+	xcopy /y "%mvrmDir%..\userdata\chaperone_info.vrchap" "%steamPath%\config"
 )
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 
