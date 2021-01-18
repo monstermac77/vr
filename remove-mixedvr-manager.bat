@@ -2,17 +2,14 @@
 
 :: NOTE: This must be run as administrator
 
-:: kill manager if currently running
-set pid=""
-for /f "tokens=2 delims=," %%P in ('tasklist /v /fo csv ^| findstr /i "MixedVR Manager"') do set pid=%%~P
-if NOT %pid% == "" (
-  taskkill /f /pid %pid%
-)
+:: kill mixedvr-manager if currently running
+taskkill /f /t /fi "Windowtitle eq Administrator:  MixedVR Manager"
+taskkill /f /t /fi "Windowtitle eq MixedVR Manager"
 
 :: delete scheduled task
 schtasks /Delete /TN "VR\Mixed VR Manager" /F
 
-echo Startup task removed - reboot your PC
+echo MixedVR-Manager has been removed
 
 pause
 

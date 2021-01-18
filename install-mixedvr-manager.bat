@@ -13,5 +13,6 @@ SCHTASKS /CREATE /SC ONLOGON /TN "VR\Mixed VR Manager" /RL HIGHEST /TR "%MixedVR
 :: /SC ONLOGON - run on user logon
 :: /RL HIGHEST - run as administrator
 
+:: TO DO: Make this a check so it confirms the task exists
 echo Scheduled Task created - please reboot your PC
 pause

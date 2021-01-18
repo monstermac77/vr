@@ -30,12 +30,15 @@
 title MixedVR Manager
 
 :: get working directory for runtime file
+:: running the bat with admin rights appears to prevent calls to external scripts using relative paths (e.g. lighthouse-keeper, USBDeview)
+:: this gets the working directory so we can use absolute paths - note additions to the calls to external scripts below
 set mvrmDir=%~dp0
 
 :: goto marker (start of loop)
 :whileTrueLoop
 
 :: calling config here, which allows hotswapping of configurations
+:: note ..\ as we are now in \bin and config is in root)
 call "%mvrmDir%..\config.bat"
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
@@ -97,7 +100,6 @@ if "%lighthouseVersion%" == "2.0" (
 if "%lighthouseVersion%" == "1.0" (
 	"%mvrmDir%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
 )
-
 
 :: restore SteamVR home state (if the user has added SAVE files)
 if exist "%mvrmDir%..\userdata\SAVE\save_game_steamvr_home.sav" (
