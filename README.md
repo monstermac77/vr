@@ -166,7 +166,7 @@ MixedVR-Manager performs all of this setup for you, automatically and in the bac
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
 * Manages your lighthouses (a.k.a basestations) so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session. Supports all lighthouse versions (v1.0 and v2.0).
 * Manages the USB port for your headset so you don't have to unplug/replug it each session (all lights on your headset will be off and your computer won't detect your headset, just as if the cable were actually unplugged)
-* Manages Windows Mixed Reality portal, such as preventing it from opening when you boot your computer and killing it when it's no longer used
+* Manages Windows Mixed Reality portal, in particular preventing it from opening when you boot your computer and killing it when it's no longer used
 * Manages SteamVR Room Setup, in particular killing the process when it launches unnecessarily
 * Maintains your SteamVR home so that you can make it perfect once and not worry about [SteamVR deleting it randomly](https://www.reddit.com/r/Vive/comments/6crmf0/steam_vr_home_keeps_resetting_to_default/). 
 * Maintains your SteamVR chaperone bounds and playspace (both size and orientation)
