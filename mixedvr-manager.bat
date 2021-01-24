@@ -15,6 +15,8 @@
 :: Notes for debugging: 
 :: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output (never click in the window, just do command+tab)
 :: * When debugging syntax errors, comment the line at the top of the file
+:: * To debug the script crashing, comment the "@echo off" at the top, then run the `.bat` this way so you can see what line it's crashing on: `cmd /k "cd c:\myfolder & mixedvr-manager.bat"
+`
 
 :::::::: release process ::::::::
 :: `git tag v1.x`
