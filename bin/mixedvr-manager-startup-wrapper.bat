@@ -7,4 +7,4 @@
 set FilePath=%1
 
 :: call vbs script and pass file path as argument
-"%FilePath%\bin\mixedvr-manager-launcher.vbs" %FilePath%
+"%FilePath%\bin\mixedvr-manager-startup.vbs" %FilePath%
