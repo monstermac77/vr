@@ -79,10 +79,10 @@ if "%steamvrStatus%" == "quit" (
 	:: this means they just shut down SteamVR, which means we'll also want to clean up 
 	:: any other applications that won't be shut down automatically, like WMR
 	:: note: we decide to do this here because 
-	:: a) it makes the shutdown process feel more reponsive and 
-	:: b) it means we are shutting down mixed reality portal before disabling the headset which is good
+	:: a. it makes the shutdown process feel more reponsive and 
+	:: b. it means we are shutting down mixed reality portal before disabling the headset which is good
 	::    because then they'll never see all the various errors that often make people think we bricked their headset
-	::    (e.g. error 7-14, error 2-22, etc)
+	::    for example, error 7-14, error 2-22, etc.
 	taskkill /f /im "MixedRealityPortal.exe"
 )
 
