@@ -14,5 +14,5 @@ schtasks /Delete /TN "VR\Mixed VR Manager" /F
 
 echo MixedVR-Manager has been removed
 
-pause
+timeout 20
 
