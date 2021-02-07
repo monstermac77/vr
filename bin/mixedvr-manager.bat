@@ -80,6 +80,17 @@ goto stateChanged
 :: "parameterized" by whatever value is set in steamvrStatus
 :stateChanged
 
+if "%steamvrStatus%" == "quit" (
+	:: this means they just shut down SteamVR, which means we'll also want to clean up 
+	:: any other applications that won't be shut down automatically, like WMR
+	:: note: we decide to do this here because 
+	:: a. it makes the shutdown process feel more reponsive and 
+	:: b. it means we are shutting down mixed reality portal before disabling the headset which is good
+	::    because then they'll never see all the various errors that often make people think we bricked their headset
+	::    for example, error 7-14, error 2-22, etc.
+	taskkill /f /im "MixedRealityPortal.exe"
+)
+
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 setlocal EnableDelayedExpansion
 :: allow this feature to be skipped if the user desires
@@ -144,10 +155,6 @@ if "%steamvrStatus%" == "running" (
 			timeout 1 >NUL
 		)
 	)
-) else (
-	:: this means they just shut down SteamVR, which means we'll also want to clean up 
-	:: any other applications that won't be shut down automatically, like WMR
-	taskkill /f /im "MixedRealityPortal.exe"
 )
 
 :: apparently you can't put markers inside if statements otherwise this would be a "break"
