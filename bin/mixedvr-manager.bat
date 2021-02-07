@@ -4,7 +4,7 @@
 :: This script was created for users of MixedVR (see the /r/MixedVR subreddit) by monstermac77
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: TODO: allow users to specify what kind of headset, right now this script only supports WMR
+:: TODO: allow users to specify what kind of headset, right now this script only supports WMR (note: will need to modify the uninstall script too)
 :: TODO: minimize WMR immediately 
 :: TODO: Tetracyclic should make it so that lighthouse-keeper has its own config file that it automatically populates with the MAC addresses; it automatically runs "discover" on first run, and populates this, so the user doesn't have to do this setup
 :: TODO: Tetracyclic, in addition to above, should detect what version of lighthouses they have
