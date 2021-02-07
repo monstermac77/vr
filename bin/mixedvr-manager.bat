@@ -113,7 +113,9 @@ if "%lighthouseVersion%" == "1.0" (
 :: restore SteamVR home state (if the user has added SAVE files)
 if exist "%mixedVRManagerDirectory%..\userdata\SAVE\save_game_steamvr_home.sav" (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
-	for %%f in (userdata\SAVE\*) do (
+	:: TODO: now that we're absolute pathing, this just straight up isn't working when there's a space in the name
+	:: need to figure it out, originally this was just: for %%f in (userdata\SAVE\*) do (...
+	for %%f in (%mixedVRManagerDirectory%..\userdata\SAVE\*) do (
 		xcopy /y %%f "%steamVRPath%\tools\steamvr_environments\game\steamtours\SAVE"
 	)
 )
