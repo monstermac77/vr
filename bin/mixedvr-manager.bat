@@ -5,12 +5,10 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: TODO: allow users to specify what kind of headset, right now this script only supports WMR
-:: TODO: figure out how to tuck this bat file in a "source" folder so that users only see the vbs and config file
 :: TODO: minimize WMR immediately 
 :: TODO: Tetracyclic should make it so that lighthouse-keeper has its own config file that it automatically populates with the MAC addresses; it automatically runs "discover" on first run, and populates this, so the user doesn't have to do this setup
 :: TODO: Tetracyclic, in addition to above, should detect what version of lighthouses they have
 :: TODO: submit our files to Microsoft for approval: https://www.microsoft.com/en-us/wdsi/filesubmission
-:: TODO: make a note in the readme that sometimes steam decides to create multiple chaperone universes, it's best to delete all but one and save that one
 
 :: Notes for debugging: 
 :: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output (never click in the window, just do command+tab)

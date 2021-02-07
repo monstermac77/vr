@@ -2,8 +2,16 @@
 
 :: NOTE: If you want to launch MixedVR-Manager manually in a terminal window, please run "mixedvr-manager.bat" as admin
 
-:: NOTE: This installer must be run as administrator
-:: TODO: run an admin check at the top to alert the user if they're not running as admin
+:: NOTE: This installer must be run as administrator (ty: https://stackoverflow.com/a/11995662/2611730)
+echo Administrative permissions required. Detecting permissions...
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    echo Success: Administrative permissions confirmed. Proceeding with install...
+) else (
+    echo Failure: Current permissions inadequate. Please right click on file and select "Run as Administrator"
+    timeout 5
+    exit
+)
 
 :: find location of Mixed VR Manager
 set MixedVRManagerFolder=%~dp0
