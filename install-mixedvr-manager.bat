@@ -19,8 +19,14 @@ SCHTASKS /CREATE /SC ONLOGON /TN "VR\Mixed VR Manager" /RL HIGHEST /TR "%MixedVR
 :: run the scheduled task (this just makes it so they don't have to reboot)
 SCHTASKS /RUN /TN "VR\Mixed VR Manager"
 
+echo *******************************************************************
+echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
+echo *******************************************************************
 echo MixedVR-Manager installed.
 echo Now please turn on an Index Controller (or start SteamVR directly) and put on your headset.
 echo No other action is required on your part, it's as simple as launching SteamVR and start playing.
 echo When you're done, just close SteamVR from within your headset. Everything will shut down automatically.
-pause
+echo *******************************************************************
+echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
+echo *******************************************************************
+timeout 60
