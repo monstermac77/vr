@@ -16,7 +16,6 @@
 :: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output (never click in the window, just do command+tab)
 :: * When debugging syntax errors, comment the line at the top of the file
 :: * To debug the script crashing, comment the "@echo off" at the top, then run the `.bat` this way so you can see what line it's crashing on: `cmd /k "cd c:\myfolder & mixedvr-manager.bat"`
-`
 
 :::::::: release process ::::::::
 :: `git tag v1.x`
@@ -31,17 +30,16 @@
 
 title MixedVR Manager
 
-:: get working directory for runtime file
-:: running the bat with admin rights appears to prevent calls to external scripts using relative paths (e.g. lighthouse-keeper, USBDeview)
-:: this gets the working directory so we can use absolute paths - note additions to the calls to external scripts below
-set mixedVRManagerDir=%~dp0
+:: running .bat files with admin rights appears to prevent calls to external scripts (e.g. lighthouse-keeper, USBDeview) using relative paths
+:: so this gets the working directory so we can use absolute paths, i.e. "%mixedVRManagerDirectory%[application]", as you can see below
+set mixedVRManagerDirectory=%~dp0
 
 :: goto marker (start of loop)
 :whileTrueLoop
 
 :: calling config here, which allows hotswapping of configurations
-:: note ..\ as we are now in \bin and config is in root)
-call "%mixedVRManagerDir%..\config.bat"
+:: note the ..\ as we are in \bin and config is up a folder (in the root)
+call "%mixedVRManagerDirectory%..\config.bat"
 
 :: check to see if steamvr is running (thank you https://stackoverflow.com/a/1329790/2611730)
 tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
@@ -88,7 +86,7 @@ setlocal EnableDelayedExpansion
 if "%allowHMDToBeDisabled%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
 	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
-	"%mixedVRManagerDir%USBDeview.exe" /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
+	"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
 ) else (
 	echo MixedVR-Manager is skipping changing state of the HMD to %desiredHMDUSBAction%, per user's configuration
 )
@@ -97,14 +95,14 @@ if "%allowHMDToBeDisabled%" == "true" (
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
 echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
 if "%lighthouseVersion%" == "2.0" (
-	"%mixedVRManagerDir%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
+	"%mixedVRManagerDirectory%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
 )
 if "%lighthouseVersion%" == "1.0" (
-	"%mixedVRManagerDir%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
+	"%mixedVRManagerDirectory%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
 )
 
 :: restore SteamVR home state (if the user has added SAVE files)
-if exist "%mixedVRManagerDir%..\userdata\SAVE\save_game_steamvr_home.sav" (
+if exist "%mixedVRManagerDirectory%..\userdata\SAVE\save_game_steamvr_home.sav" (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
 	for %%f in (userdata\SAVE\*) do (
 		xcopy /y %%f "%steamVRPath%\tools\steamvr_environments\game\steamtours\SAVE"
@@ -112,9 +110,9 @@ if exist "%mixedVRManagerDir%..\userdata\SAVE\save_game_steamvr_home.sav" (
 )
 
 :: restore SteamVR chaperone bounds state (if the user has added chaperone_info.vrchap)
-if exist "%mixedVRManagerDir%..\userdata\chaperone_info.vrchap" (
+if exist "%mixedVRManagerDirectory%..\userdata\chaperone_info.vrchap" (
 	echo MixedVR-Manager is overwriting the existing SteamVR chaperone bounds with the user specified chaperone bounds...
-	xcopy /y "%mixedVRManagerDir%..\userdata\chaperone_info.vrchap" "%steamPath%\config"
+	xcopy /y "%mixedVRManagerDirectory%..\userdata\chaperone_info.vrchap" "%steamPath%\config"
 )
 
 :: if we're switching to the running state, then we also need to restart SteamVR now that 

@@ -1,7 +1,7 @@
 @echo off
 
+:: NOTE: If you want to launch MixedVR-Manager manually, please run "mixedvr-manager.bat" as admin
 :: this file should only be run by the scheduled task in elevated permissions
-:: to launch the runtime manually, just run mixedvr-manager.bat as admin
 
 :: file path for MixedVR-Manager from argument passed in by scheduled task
 set FilePath=%1
