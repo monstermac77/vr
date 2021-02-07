@@ -9,7 +9,7 @@ if %errorLevel% == 0 (
     echo Success: Administrative permissions confirmed. Proceeding with install...
 ) else (
     echo Failure: Current permissions inadequate. Please right click on file and select "Run as Administrator"
-    timeout 5
+    timeout 10
     exit
 )
 
