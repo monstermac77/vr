@@ -1,6 +1,7 @@
 @echo off
 
-:: NOTE: This must be run as administrator
+:: NOTE: This uninstaller must be run as administrator
+:: TODO: run an admin check at the top to alert the user if they're not running as admin
 
 :: kill mixedvr-manager if currently running
 taskkill /f /t /fi "Windowtitle eq Administrator:  MixedVR Manager"
