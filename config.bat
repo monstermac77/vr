@@ -6,7 +6,7 @@
 
 :: specify whether you want MixedVR Manager to turn on/off your lighthouses
 :: if you don't have lighthouses, you NEED to set this to false
-set allowLighthouseManagement=true
+set allowLighthouseManagement=false
 
 :: if you don't want your HMD to be enabled/disabled, set this to false
 set allowHMDManagement=true

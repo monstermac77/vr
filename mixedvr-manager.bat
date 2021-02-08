@@ -90,6 +90,7 @@ if "%steamvrStatus%" == "quit" (
 	taskkill /f /im "MixedRealityPortal.exe"
 )
 
+:: toggle the HMD state
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 :: allow this feature to be skipped if the user desires
 if "%allowHMDManagement%" == "true" (
@@ -102,12 +103,25 @@ if "%allowHMDManagement%" == "true" (
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
-echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
-if "%lighthouseVersion%" == "2.0" (
-	bin\lighthouse-keeper.exe 2 %desiredLighthouseState% %lighthouseMACAddressList%
-)
-if "%lighthouseVersion%" == "1.0" (
-	bin\lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
+:: allow this feature to be skipped if the user desires
+if "%allowLighthouseManagement%" == "true" (
+	echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
+	if "%lighthouseVersion%" == "2.0" (
+		bin\lighthouse-keeper.exe 2 %desiredLighthouseState% %lighthouseMACAddressList%
+	)
+	if "%lighthouseVersion%" == "1.0" (
+		bin\lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
+	)
+) else (
+	echo MixedVR-Manager is skipping changing state of the lighthouses to %desiredLighthouseState%, per user's configuration
+	if "%steamvrStatus%" == "running" (
+		:: we have to wait some time though for SteamVR to launch
+		:: otherwise we try killing it before it has started, which ends up with us having never
+		:: restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
+		:: TODO: could improve this by doing the same waiting method we do for room setup, since it might take longer than
+		:: 15 seconds for SteamVR to start up on some people's machines
+		timeout 15
+	)
 )
 
 
