@@ -120,7 +120,7 @@ if "%allowLighthouseManagement%" == "true" (
 		:: restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
 		:: TODO: could improve this by doing the same waiting method we do for room setup, since it might take longer than
 		:: 15 seconds for SteamVR to start up on some people's machines
-		timeout 15
+		timeout %maxLaunchTimeForSteamVR%
 	)
 )
 
@@ -156,8 +156,8 @@ if "%steamvrStatus%" == "running" (
 	:: continue with the script's execution. 
 	:: note: this "delayed expansion" business really got me; apparently variables are 
 	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
-	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to %maxWaitTimeForRoomSetup% seconds...
-	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
+	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to 90 seconds...
+	for /L %%i in (1,1,90) do (
 		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
 		if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
 		if "!roomSetupStatus!" == "running" (
@@ -166,6 +166,16 @@ if "%steamvrStatus%" == "running" (
 		) else (
 			timeout 1 >NUL
 		)
+
+		:: also allow this loop to be exited earlier if SteamVR has become quit
+		if %%i geq %maxLaunchTimeForSteamVR% (
+			tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
+			if "!ERRORLEVEL!"=="0" (set steamvrWaitingStatus=running) else (set steamvrWaitingStatus=quit)
+			if "!steamvrWaitingStatus!" == "quit" (
+				goto roomSetupQuitComplete
+			)
+		)
+
 	)
 )
 

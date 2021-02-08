@@ -22,13 +22,9 @@ set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 :: specify what version of lighthouses (a.k.a basestations) you're using, 2.0 or 1.0
 set lighthouseVersion=2.0
 
-:: maxWaitTimeForRoomSetup is how long (in seconds) you ever would expect it to take for the 
-:: SteamVR Room Setup to open after a launch of SteamVR. This is essentially a timeout value 
-:: that is only relevant to MixedVR users who are forcing SteamVR bounds.
-:: If you want to run SteamVR Room Setup, just launch VR, let MixedVR Manager kill it 
-:: and then manually start it from the SteamVR status window. 
-:: MixedVR Manager will only ever kill it once per VR session.
-set maxWaitTimeForRoomSetup=90
+:: maxLaunchTimeForSteamVR is how long (in seconds) you ever would expect it to take for SteamVR to launch. 
+:: if you have a slow machine and MixedVR Manager isn't working, increase this value.
+set maxLaunchTimeForSteamVR=15
 
 :: steamPath is the directory where you have Steam installed; it's only used for the restoring SteamVR home state and for restoring the chaperone bounds
 :: state, both of which are optional features which are disabled by default, so don't be concerned if this path is wrong if you're not using those features
