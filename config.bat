@@ -8,7 +8,8 @@
 :: if you don't have lighthouses, you NEED to set this to false
 set allowLighthouseManagement=true
 
-:: if you don't want your HMD to be enabled/disabled, set this to false
+:: specify whether you want MixedVR Manager to turn enable/disable your HMD
+:: if you don't want your HMD to be disabled, set this to false
 set allowHMDManagement=true
 
 :: specify the MAC addresses of your lighthouses (a.k.a basestations) here, separated by a space
