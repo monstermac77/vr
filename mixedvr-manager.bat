@@ -50,7 +50,7 @@ if "%steamvrLastKnownStatus%" == "" (
 
 :: handle the case where there is no change
 if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
-	timeout %pollingRate% >NUL
+	timeout 1 >NUL
 	goto whileTrueLoop
 )
 
@@ -89,7 +89,7 @@ if "%steamvrStatus%" == "quit" (
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 setlocal EnableDelayedExpansion
 :: allow this feature to be skipped if the user desires
-if "%allowHMDToBeDisabled%" == "true" (
+if "%allowHMDManagement%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
 	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
 	bin\USBDeview.exe /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
