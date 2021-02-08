@@ -120,7 +120,8 @@ if "%allowLighthouseManagement%" == "true" (
 		:: restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
 		:: TODO: could improve this by doing the same waiting method we do for room setup, since it might take longer than
 		:: 15 seconds for SteamVR to start up on some people's machines
-		timeout %maxLaunchTimeForSteamVR%
+		echo Waiting %maxLaunchTimeForSteamVR% seconds for SteamVR to launch...
+		timeout %maxLaunchTimeForSteamVR% >NUL
 	)
 )
 
@@ -172,6 +173,7 @@ if "%steamvrStatus%" == "running" (
 			tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
 			if "!ERRORLEVEL!"=="0" (set steamvrWaitingStatus=running) else (set steamvrWaitingStatus=quit)
 			if "!steamvrWaitingStatus!" == "quit" (
+				echo SteamVR was exited or crashed almost immediately after start of play session. User is likely testing script or serious issue is occuring.
 				goto roomSetupQuitComplete
 			)
 		)
