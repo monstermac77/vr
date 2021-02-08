@@ -1,4 +1,8 @@
+:: don't print out every command as its executed
 @echo off
+
+:: allow variables to be changed inside loops
+setlocal EnableDelayedExpansion
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: This script was created for users of MixedVR (see the /r/MixedVR subreddit) by monstermac77
@@ -87,7 +91,6 @@ if "%steamvrStatus%" == "quit" (
 )
 
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
-setlocal EnableDelayedExpansion
 :: allow this feature to be skipped if the user desires
 if "%allowHMDManagement%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
@@ -140,7 +143,6 @@ if "%steamvrStatus%" == "running" (
 	:: note: this "delayed expansion" business really got me; apparently variables are 
 	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
 	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to %maxWaitTimeForRoomSetup% seconds...
-	setlocal EnableDelayedExpansion
 	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
 		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
 		if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
