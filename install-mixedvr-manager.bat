@@ -22,7 +22,7 @@ set MixedVRManagerFolder=%MixedVRManagerFolder:~0,-1%
 :: create scheduled task
 :: /SC ONLOGON - run on user logon
 :: /RL HIGHEST - run as administrator
-SCHTASKS /CREATE /SC ONLOGON /TN "VR\Mixed VR Manager" /RL HIGHEST /TR "%MixedVRManagerFolder%\bin\mixedvr-manager-startup-wrapper.bat %MixedVRManagerFolder%"
+SCHTASKS /CREATE /SC ONLOGON /TN "VR\Mixed VR Manager" /RL HIGHEST /TR "'%MixedVRManagerFolder%\bin\mixedvr-manager-startup-wrapper.bat' %MixedVRManagerFolder%"
 
 :: run the scheduled task (this just makes it so they don't have to reboot)
 SCHTASKS /RUN /TN "VR\Mixed VR Manager"

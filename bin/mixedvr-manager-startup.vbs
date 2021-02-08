@@ -12,7 +12,8 @@ End if
 
 'Call runtime bat via absolute path - again admin rights appears to cause issues with relative paths
 'with VBS it seems to run from C:\Windows\System32\
+'additional escaped quotes to allow for filepaths with spaces
 Set oShell = CreateObject ("Wscript.Shell")
 Dim strArgs
-strArgs = "cmd /c " & FilePath & "\bin\mixedvr-manager.bat"
+strArgs = "cmd /c """ & FilePath & "\bin\mixedvr-manager.bat"""
 oShell.Run strArgs, 0, false

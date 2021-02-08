@@ -5,7 +5,8 @@
 :: Another note: have confirmed that we still need to launch through vbs to make the program run headlessly
 
 :: file path for MixedVR-Manager from argument passed in by scheduled task
-set FilePath=%1
+:: using %* to collate all arguments to catch where filepath has spaces (and therefore passed as multiple parameters)
+set FilePath=%*
 
 :: call vbs script and pass file path as argument
-"%FilePath%\bin\mixedvr-manager-startup.vbs" %FilePath%
+"%FilePath%\bin\mixedvr-manager-startup.vbs" "%FilePath%"
