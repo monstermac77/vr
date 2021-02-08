@@ -7,7 +7,7 @@ if %errorLevel% == 0 (
     echo Success: Administrative permissions confirmed. Proceeding with uninstall...
 ) else (
     echo Failure: Current permissions inadequate. Please right click on file and select "Run as Administrator"
-    timeout 10
+    timeout 10 >NUL
     exit
 )
 
@@ -25,7 +25,17 @@ schtasks /Delete /TN "VR\Mixed VR Manager" /F
 echo MixedVR-Manager is changing state of USB device, the HMD, to /enable just in case it was off...
 "%MixedVRManagerFolder%bin\USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
 
-echo MixedVR-Manager has been removed
+echo *******************************************************************
+echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
+echo *******************************************************************
+echo MixedVR-Manager uninstalled.
+echo If MixedVR manager wasn't working correctly for you, try the following:
+echo * Double clicking on mixedvr-manager.bat inside the bin/ folder
+echo * Opening SteamVR
+echo * Sending a screenshot of the output to /u/monstermac77 on Reddit, or posting it on the Github
+echo *******************************************************************
+echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
+echo *******************************************************************
 
-timeout 20
+timeout 60 >NUL
 

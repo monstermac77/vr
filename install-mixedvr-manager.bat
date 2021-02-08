@@ -9,7 +9,7 @@ if %errorLevel% == 0 (
     echo Success: Administrative permissions confirmed. Proceeding with install...
 ) else (
     echo Failure: Current permissions inadequate. Please right click on file and select "Run as Administrator"
-    timeout 10
+    timeout 10 >NUL
     exit
 )
 
@@ -38,4 +38,4 @@ echo When you're done, just close SteamVR from within your headset. Everything w
 echo *******************************************************************
 echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
 echo *******************************************************************
-timeout 60
+timeout 60 >NUL
