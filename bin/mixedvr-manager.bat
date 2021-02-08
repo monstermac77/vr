@@ -1,4 +1,8 @@
+:: don't print out every command as its executed
 @echo off
+
+:: allow variables to be changed inside loops
+setlocal EnableDelayedExpansion
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: This script was created for users of MixedVR (see the /r/MixedVR subreddit) by monstermac77
@@ -53,7 +57,7 @@ if "%steamvrLastKnownStatus%" == "" (
 
 :: handle the case where there is no change
 if "%steamvrStatus%" == "%steamvrLastKnownStatus%" (
-	timeout %pollingRate% >NUL
+	timeout 1 >NUL
 	goto whileTrueLoop
 )
 
@@ -89,10 +93,10 @@ if "%steamvrStatus%" == "quit" (
 	taskkill /f /im "MixedRealityPortal.exe"
 )
 
+:: toggle the HMD state
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
-setlocal EnableDelayedExpansion
 :: allow this feature to be skipped if the user desires
-if "%allowHMDToBeDisabled%" == "true" (
+if "%allowHMDManagement%" == "true" (
 	:: toggle state of the USB that the headset is plugged into
 	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
 	"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
@@ -102,12 +106,35 @@ if "%allowHMDToBeDisabled%" == "true" (
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
+<<<<<<< HEAD:bin/mixedvr-manager.bat
 echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
 if "%lighthouseVersion%" == "2.0" (
 	"%mixedVRManagerDirectory%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
 )
 if "%lighthouseVersion%" == "1.0" (
 	"%mixedVRManagerDirectory%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
+=======
+:: allow this feature to be skipped if the user desires
+if "%allowLighthouseManagement%" == "true" (
+	echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
+	if "%lighthouseVersion%" == "2.0" (
+		bin\lighthouse-keeper.exe 2 %desiredLighthouseState% %lighthouseMACAddressList%
+	)
+	if "%lighthouseVersion%" == "1.0" (
+		bin\lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
+	)
+) else (
+	echo MixedVR-Manager is skipping changing state of the lighthouses to %desiredLighthouseState%, per user's configuration
+	if "%steamvrStatus%" == "running" (
+		:: we have to wait some time though for SteamVR to launch
+		:: otherwise we try killing it before it has started, which ends up with us having never
+		:: restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
+		:: TODO: could improve this by doing the same waiting method we do for room setup, since it might take longer than
+		:: 15 seconds for SteamVR to start up on some people's machines
+		echo Waiting %maxLaunchTimeForSteamVR% seconds for SteamVR to launch...
+		timeout %maxLaunchTimeForSteamVR% >NUL
+	)
+>>>>>>> upstream/main:mixedvr-manager.bat
 )
 
 :: restore SteamVR home state (if the user has added SAVE files)
@@ -143,9 +170,8 @@ if "%steamvrStatus%" == "running" (
 	:: continue with the script's execution. 
 	:: note: this "delayed expansion" business really got me; apparently variables are 
 	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
-	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to %maxWaitTimeForRoomSetup% seconds...
-	setlocal EnableDelayedExpansion
-	for /L %%i in (1,1,%maxWaitTimeForRoomSetup%) do (
+	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to 90 seconds...
+	for /L %%i in (1,1,90) do (
 		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
 		if "!ERRORLEVEL!"=="0" (set roomSetupStatus=running) else (set roomSetupStatus=quit)
 		if "!roomSetupStatus!" == "running" (
@@ -154,6 +180,17 @@ if "%steamvrStatus%" == "running" (
 		) else (
 			timeout 1 >NUL
 		)
+
+		:: also allow this loop to be exited earlier if SteamVR has become quit
+		if %%i geq %maxLaunchTimeForSteamVR% (
+			tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
+			if "!ERRORLEVEL!"=="0" (set steamvrWaitingStatus=running) else (set steamvrWaitingStatus=quit)
+			if "!steamvrWaitingStatus!" == "quit" (
+				echo SteamVR was exited or crashed almost immediately after start of play session. User is likely testing script or serious issue is occuring.
+				goto roomSetupQuitComplete
+			)
+		)
+
 	)
 )
 
