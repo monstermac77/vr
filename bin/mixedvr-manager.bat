@@ -107,22 +107,14 @@ if "%allowHMDManagement%" == "true" (
 
 :: toggle lighthouse state
 if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desiredLighthouseState=off)
-<<<<<<< HEAD:bin/mixedvr-manager.bat
-echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
-if "%lighthouseVersion%" == "2.0" (
-	"%mixedVRManagerDirectory%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
-)
-if "%lighthouseVersion%" == "1.0" (
-	"%mixedVRManagerDirectory%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
-=======
 :: allow this feature to be skipped if the user desires
 if "%allowLighthouseManagement%" == "true" (
 	echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
 	if "%lighthouseVersion%" == "2.0" (
-		bin\lighthouse-keeper.exe 2 %desiredLighthouseState% %lighthouseMACAddressList%
+		"%mixedVRManagerDirectory%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
 	)
 	if "%lighthouseVersion%" == "1.0" (
-		bin\lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
+		"%mixedVRManagerDirectory%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
 	)
 ) else (
 	echo MixedVR-Manager is skipping changing state of the lighthouses to %desiredLighthouseState%, per user's configuration
@@ -135,7 +127,6 @@ if "%allowLighthouseManagement%" == "true" (
 		echo Waiting %maxLaunchTimeForSteamVR% seconds for SteamVR to launch...
 		timeout %maxLaunchTimeForSteamVR% >NUL
 	)
->>>>>>> upstream/main:mixedvr-manager.bat
 )
 
 :: restore SteamVR home state (if the user has added SAVE files)
