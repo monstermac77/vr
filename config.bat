@@ -25,7 +25,7 @@ set lighthouseVersion=2.0
 :: maxLaunchTimeForSteamVR is how long (in seconds) you ever would expect it to take for SteamVR to launch. 
 :: if you have a slow machine and MixedVR Manager isn't working, increase this value. Likewise, if you have a fast machine
 :: and you want to reduce your VR launch/exit time, you can try lowering this value (with caution).
-set maxLaunchTimeForSteamVR=15
+set maxLaunchTimeForSteamVR=20
 
 :: steamPath is the directory where you have Steam installed; it's only used for the restoring SteamVR home state and for restoring the chaperone bounds
 :: state, both of which are optional features which are disabled by default, so don't be concerned if this path is wrong if you're not using those features

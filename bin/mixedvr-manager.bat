@@ -124,7 +124,8 @@ if "%allowLighthouseManagement%" == "true" (
 		:: otherwise we try killing it before it has started, which ends up with us having never
 		:: restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
 		:: TODO: could improve this by doing the same waiting method we do for room setup, since it might take longer than
-		:: 15 seconds for SteamVR to start up on some people's machines
+		:: x seconds for SteamVR to start up on some people's machines. If we do this method, we should take it out of this
+		:: if statement and just apply it to all users, not just those not using lighthouses
 		echo Waiting %maxLaunchTimeForSteamVR% seconds for SteamVR to launch...
 		timeout %maxLaunchTimeForSteamVR% >NUL
 	)
@@ -180,7 +181,7 @@ if "%steamvrStatus%" == "running" (
 		:: been quit already, allowing us to do the setup procedure now, rather than after 90 seconds, which is 
 		:: a huge difference. Note that we have to wait for SteamVR to actually launch first
 		:: TODO we could do this better, by checking to see if it has opened and then closed, but instead 
-		:: we're just going to wait 15 seconds no matter what. This could end up being an issue soon, if a lot of 
+		:: we're just going to wait x seconds no matter what. This could end up being an issue soon, if a lot of 
 		:: people have machines that can't launch SteamVR in that sensible default. In that cause, we should detect 
 		:: when it opens and then closes
 		if %%i geq %maxLaunchTimeForSteamVR% (
