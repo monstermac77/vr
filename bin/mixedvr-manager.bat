@@ -19,6 +19,7 @@ setlocal EnableDelayedExpansion
 :: * Prevent the script from starting on startup (or kill it) and then run the .bat file so you can see the output (never click in the window, just do command+tab)
 :: * When debugging syntax errors, comment the line at the top of the file
 :: * To debug the script crashing, comment the "@echo off" at the top, then run the `.bat` this way so you can see what line it's crashing on: `cmd /k "cd c:\myfolder & mixedvr-manager.bat"`
+:: * The most common case for crashing seems to be adding parens inside comments that are inside for/if statements...
 
 :::::::: release process ::::::::
 :: `git tag v1.x`
@@ -133,7 +134,7 @@ if "%allowLighthouseManagement%" == "true" (
 if exist "%mixedVRManagerDirectory%..\userdata\SAVE\save_game_steamvr_home.sav" (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
 	:: TODO bug: now that we're absolute pathing, this just straight up isn't working when there's a space in the name
-	:: need to figure it out, originally this was just: for %%f in (userdata\SAVE\*) do (...
+	:: need to figure it out, originally this was just: for %%f in userdata\SAVE\* do 
 	for %%f in (%mixedVRManagerDirectory%..\userdata\SAVE\*) do (
 		xcopy /y %%f "%steamVRPath%\tools\steamvr_environments\game\steamtours\SAVE"
 	)
@@ -176,8 +177,8 @@ if "%steamvrStatus%" == "running" (
 		:: although not likely during real use sessions, it's possible that SteamVR is quit or crashes 
 		:: before SteamVR Room setup is launched, or for non-MixedVR users, room setup will never launch
 		:: therefore we allow an early exit from this 90 second loop if we detect that SteamVR has actually
-		:: been quit already, allowing us to do the setup procedure now, rather than after 90 seconds (which is 
-		:: a huge difference). Note that we have to wait for SteamVR to actually launch first
+		:: been quit already, allowing us to do the setup procedure now, rather than after 90 seconds, which is 
+		:: a huge difference. Note that we have to wait for SteamVR to actually launch first
 		:: TODO we could do this better, by checking to see if it has opened and then closed, but instead 
 		:: we're just going to wait 15 seconds no matter what. This could end up being an issue soon, if a lot of 
 		:: people have machines that can't launch SteamVR in that sensible default. In that cause, we should detect 
