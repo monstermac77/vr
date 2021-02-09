@@ -32,7 +32,7 @@ echo MixedVR-Manager uninstalled.
 echo If MixedVR manager wasn't working correctly for you, try the following:
 echo * Double clicking on mixedvr-manager.bat inside the bin/ folder
 echo * Opening SteamVR
-echo * Sending a screenshot of the output to /u/monstermac77 on Reddit, or posting it on the Github
+echo * Send a screenshot of the output to /u/monstermac77 on Reddit, or post it on the Github
 echo *******************************************************************
 echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
 echo *******************************************************************

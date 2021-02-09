@@ -132,7 +132,7 @@ if "%allowLighthouseManagement%" == "true" (
 :: restore SteamVR home state (if the user has added SAVE files)
 if exist "%mixedVRManagerDirectory%..\userdata\SAVE\save_game_steamvr_home.sav" (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
-	:: TODO: now that we're absolute pathing, this just straight up isn't working when there's a space in the name
+	:: TODO bug: now that we're absolute pathing, this just straight up isn't working when there's a space in the name
 	:: need to figure it out, originally this was just: for %%f in (userdata\SAVE\*) do (...
 	for %%f in (%mixedVRManagerDirectory%..\userdata\SAVE\*) do (
 		xcopy /y %%f "%steamVRPath%\tools\steamvr_environments\game\steamtours\SAVE"
@@ -150,7 +150,7 @@ if exist "%mixedVRManagerDirectory%..\userdata\chaperone_info.vrchap" (
 :: note, we need to kill room setup if it's running because otherwise it may still be open when we 
 :: start relying on it being quit when blocking on the next loop
 if "%steamvrStatus%" == "running" (
-	echo MixedVR-Manager is restarting SteamVR so it SteamVR can detect the now powered on lighthouses and HMD.
+	echo MixedVR-Manager is restarting SteamVR so SteamVR can detect the now powered on lighthouses and HMD.
 	taskkill /f /im "steamvr_room_setup.exe" 2>NUL
 	taskkill /f /im "vrmonitor.exe"
 	taskkill /f /im "vrserver.exe"
@@ -158,8 +158,8 @@ if "%steamvrStatus%" == "running" (
 	start steam://launch/250820/VR
 	
 	:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
-	:: maxWaitTimeForRoomSetup seconds, assume it's never going to start, and just 
-	:: continue with the script's execution. 
+	:: 90 seconds, assume it's never going to start, and just continue with the script's execution. 
+	:: this is only applicable to MixedVR users who are forcing the SteamVR chaperone bounds
 	:: note: this "delayed expansion" business really got me; apparently variables are 
 	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
 	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to 90 seconds...
@@ -173,12 +173,20 @@ if "%steamvrStatus%" == "running" (
 			timeout 1 >NUL
 		)
 
-		:: also allow this loop to be exited earlier if SteamVR has become quit
+		:: although not likely during real use sessions, it's possible that SteamVR is quit or crashes 
+		:: before SteamVR Room setup is launched, or for non-MixedVR users, room setup will never launch
+		:: therefore we allow an early exit from this 90 second loop if we detect that SteamVR has actually
+		:: been quit already, allowing us to do the setup procedure now, rather than after 90 seconds (which is 
+		:: a huge difference). Note that we have to wait for SteamVR to actually launch first
+		:: TODO we could do this better, by checking to see if it has opened and then closed, but instead 
+		:: we're just going to wait 15 seconds no matter what. This could end up being an issue soon, if a lot of 
+		:: people have machines that can't launch SteamVR in that sensible default. In that cause, we should detect 
+		:: when it opens and then closes
 		if %%i geq %maxLaunchTimeForSteamVR% (
 			tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
 			if "!ERRORLEVEL!"=="0" (set steamvrWaitingStatus=running) else (set steamvrWaitingStatus=quit)
 			if "!steamvrWaitingStatus!" == "quit" (
-				echo SteamVR was exited or crashed almost immediately after start of play session. User is likely testing script or serious issue is occuring.
+				echo SteamVR was exited or crashed almost immediately after start of play session. User is likely testing script, has slow computer, or serious issue is occuring.
 				goto roomSetupQuitComplete
 			)
 		)
