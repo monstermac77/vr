@@ -181,8 +181,8 @@ MixedVR Manager performs all of this setup for you, automatically and in the bac
 4) Right click on `install-mixedvr-manager.bat` and then click "Run as administrator"
 
 **Usage**
-* Start-up: Turn on an Index controller. Wait for SteamVR to automatically launch, quit, then launch again. 
-* Shutdown: Exit SteamVR from within your HMD.
+* Start-up: Launch SteamVR (which can be done by turning on an Index controller). Lighthouses and HMD will turn on automatically. 
+* Shutdown: Exit SteamVR from within your HMD. Lighthouses and HMD will turn off automatically.
 
 **Optional Features**
 * Maintaining SteamVR chaperone bounds and playspace
