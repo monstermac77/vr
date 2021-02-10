@@ -19,7 +19,7 @@ set allowHMDManagement=true
 :: 1. Search the start menu for the application "Command Prompt" and press enter
 :: 2. Type `cd C:\Users\Joe\Dropbox\big-bro-peep\vr-x.y\bin\`, (filling in your specific path to the vr folder) and press enter
 :: 3. Then type `lighthouse-keeper.exe 2 discover` and press enter (change the 2 to a 1 if you have 1.0 lighthouses)
-:: NOTE: you may have to run the discover command several times before you get both MAC addresses (throw in a reboot for good measure)
+:: NOTE: you may have to run the discover command SEVERAL times (it often fails) before you get both MAC addresses; try a reboot if it's not working
 set lighthouseMACAddressList=FE:D0:49:F5:78:D6 E2:81:7F:AC:2B:ED
 
 :: specify what version of lighthouses you're using, 2.0 or 1.0
