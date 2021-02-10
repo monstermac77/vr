@@ -15,7 +15,7 @@ set allowHMDManagement=true
 :: specify the MAC addresses of your lighthouses (a.k.a basestations) here, separated by a space
 :: There are two ways to find the MAC addresses: 
 :: * a) download the "Lighthouse Power Management" app (Android only)
-:: * b) follow the instructions below
+:: * b) follow these instructions:
 :: 1. Search the start menu for the application "Command Prompt" and press enter
 :: 2. Type `cd C:\Users\Joe\Dropbox\big-bro-peep\vr-x.y\bin\`, (filling in your specific path to the vr folder) and press enter
 :: 3. Then type `lighthouse-keeper.exe 2 discover` and press enter (change the 2 to a 1 if you have 1.0 lighthouses)
