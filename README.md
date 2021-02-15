@@ -161,7 +161,7 @@ k) There is a known issue with the native Steam VR's Google Earth grid icons tha
 
 Like many people, I just want to get to SteamVR and start playing as quickly as possible. But there is often a lot of configuration that needs to be done every time a VR session is started or stopped, especially for those using devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)).
 
-MixedVR Manager performs all of this setup for you, automatically and in the background. With MixedVR Manager, all you need to do is launch SteamVR on your PC (which can be as easy as turning on an Index controller). MixedVR Manager handles everything else. 
+MixedVR Manager performs all of this setup for you, automatically and in the background. With MixedVR Manager, all you need to do is launch SteamVR on your PC (which can be as easy as turning on an Index/Vive controller). MixedVR Manager handles everything else. 
 
 **Features** ([video](https://www.youtube.com/watch?v=8j3yd5B9If0))
 * Manages your lighthouses (a.k.a basestations) so you don't need to use the [Android app](https://play.google.com/store/apps/details?id=com.jeroen1602.lighthouse_pm&hl=en_US&gl=US) or smart plugs to turn them off/on each session. Supports all lighthouse versions (v1.0 and v2.0).
@@ -181,7 +181,7 @@ MixedVR Manager performs all of this setup for you, automatically and in the bac
 4) Right click on `install-mixedvr-manager.bat` and then click "Run as administrator"
 
 **Usage**
-* Start-up: Launch SteamVR (which can be done by turning on an Index controller). Wait 30 seconds (Lighthouses and HMD will turn on automatically).
+* Start-up: Launch SteamVR (which can be done by turning on an Index/Vive controller). Wait 30 seconds (Lighthouses and HMD will turn on automatically).
 * Shutdown: Exit SteamVR from within your HMD. Wait 20 seconds (Lighthouses and HMD will turn off automatically).
 
 **Optional Features**
