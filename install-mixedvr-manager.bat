@@ -31,7 +31,7 @@ echo *******************************************************************
 echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
 echo *******************************************************************
 echo MixedVR Manager has been installed and is now running.
-echo Please turn on an Index Controller (or start SteamVR directly), count to 30, and then put on your headset.
+echo Please turn on an Index/Vive Controller (or start SteamVR directly), count to 30, and then put on your headset.
 echo After launching SteamVR you don't have to touch the mouse/keyboard/controller; MixedVR Manager handles all setup.
 echo (Note: you will see SteamVR exit and then restart several seconds later. This is normal. It's not crashing).
 echo When you're done, open the SteamVR dashboard and select 'Exit VR'. MixedVR Manager will shut down everything automatically.
