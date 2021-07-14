@@ -112,10 +112,21 @@ if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desi
 if "%allowLighthouseManagement%" == "true" (
 	echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
 	if "%lighthouseVersion%" == "2.0" (
-		"%mixedVRManagerDirectory%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
+		FOR %%A IN (%lighthouseMACAddressList%) DO (
+			start /B %mixedVRManagerDirectory%lighthouse-keeper.exe %desiredLighthouseState% 2 %VAR1%%%A
+		)
 	)
 	if "%lighthouseVersion%" == "1.0" (
-		"%mixedVRManagerDirectory%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
+		FOR %%A IN (%lighthouseMACAddressList%) DO (
+			start /B %mixedVRManagerDirectory%lighthouse-keeper.exe %desiredLighthouseState% 1 %VAR1%%%A
+		)
+	)
+	:WaitForLighthouseKeeper
+	tasklist /FI "IMAGENAME eq lighthouse-keeper.exe" 2>NUL | find /I /N "lighthouse-keeper.exe">NUL
+	if "%ERRORLEVEL%"=="0" (
+		goto WaitForLighthouseKeeper
+	) else (
+		goto DoneForLighthouseKeeper
 	)
 ) else (
 	echo MixedVR-Manager is skipping changing state of the lighthouses to %desiredLighthouseState%, per user's configuration
@@ -130,6 +141,7 @@ if "%allowLighthouseManagement%" == "true" (
 		timeout %maxLaunchTimeForSteamVR% >NUL
 	)
 )
+:DoneForLighthouseKeeper
 
 :: restore SteamVR home state (if the user has added SAVE files)
 if exist "%mixedVRManagerDirectory%..\userdata\SAVE\save_game_steamvr_home.sav" (
