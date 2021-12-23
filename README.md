@@ -3,7 +3,7 @@ My guide to a perfect VR setup has been moved to my personal website, here: http
 
 ## MixedVR Manager
 
-Like many people, I just want to get to SteamVR and start playing as quickly as possible. But there is often a lot of configuration that needs to be done every time a VR session is started or stopped, especially for those using devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/)).
+Like many people, I just want to get to SteamVR and start playing as quickly as possible. But there is often a lot of configuration that needs to be done every time a VR session is started or stopped, especially for those using devices from different ecosystems (known as [Mixed VR](https://www.reddit.com/r/MixedVR/), which was term I coined and created a subreddit for in November 2020).
 
 MixedVR Manager performs all of this setup for you, automatically and in the background. With MixedVR Manager, all you need to do is launch SteamVR on your PC (which can be as easy as turning on an Index/Vive controller). MixedVR Manager handles everything else. 
 
