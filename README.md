@@ -1,5 +1,5 @@
 # A Perfectionist's VR Setup
-My guide to a perfect VR setup has been moved to my personal website, here: https://joepucc.io/notes/a-perfectionist's-vr-setup.php
+My guide to a perfect VR setup has been moved to my personal website, here: https://joepucc.io/notes/a-perfectionist's-VR-setup.php
 
 ## MixedVR Manager
 
