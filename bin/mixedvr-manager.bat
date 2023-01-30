@@ -85,21 +85,37 @@ goto stateChanged
 :stateChanged
 
 if "%steamvrStatus%" == "quit" (
-	:: this means they just shut down SteamVR, which means we'll also want to clean up 
-	:: any other applications that won't be shut down automatically, like WMR
-	:: note: we decide to do this here because 
-	:: a. it makes the shutdown process feel more reponsive and 
-	:: b. it means we are shutting down mixed reality portal before disabling the headset which is good
-	::    because then they'll never see all the various errors that often make people think we bricked their headset
-	::    for example, error 7-14, error 2-22, etc.
+	rem this means they just shut down SteamVR, which means we'll also want to clean up
+	rem any other applications that won't be shut down automatically, like WMR
+	rem note: we decide to do this here because
+	rem a. it makes the shutdown process feel more reponsive and
+	rem b. it means we are shutting down mixed reality portal before disabling the headset which is good
+	rem    because then they'll never see all the various errors that often make people think we bricked their headset
+	rem    for example, error 7-14, error 2-22, etc.
 	taskkill /f /im "MixedRealityPortal.exe"
+)
+
+:: Disable HTC Vive HDM USB except Watchman USB
+if "%disableHTCViveHMD%" == "true" (
+	rem override allowHMDManagement because disableHTCViveHMD and allowHMDManagement cannot be true at the same time
+	if "%allowHMDManagement%" == "true" (
+		echo WARNING: allowHMDManagement is configured in config.bat to true and disableHTCViveHMD is also true
+		echo WARNING: allowHMDManagement will be overridden to false
+		set allowHMDManagement=false
+	)
+	echo MixedVR-Manager is disabling HTC Vive HMD USB devices
+
+	rem HTC VIVE 			0bb4;2c87
+	rem Lighthouse FPGA RX 	28de;2000
+	"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /disable_by_pid 0bb4;2c87
+	"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /disable_by_pid 28de;2000
 )
 
 :: toggle the HMD state
 if "%steamvrStatus%" == "running" (set desiredHMDUSBAction=enable) else (set desiredHMDUSBAction=disable)
 :: allow this feature to be skipped if the user desires
 if "%allowHMDManagement%" == "true" (
-	:: toggle state of the USB that the headset is plugged into
+	rem toggle state of the USB that the headset is plugged into
 	echo MixedVR-Manager is changing state of USB device, the HMD, to /!desiredHMDUSBAction!...
 	"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /!desiredHMDUSBAction! "HoloLens Sensors"
 ) else (
@@ -111,31 +127,37 @@ if "%steamvrStatus%" == "running" (set desiredLighthouseState=on) else (set desi
 :: allow this feature to be skipped if the user desires
 if "%allowLighthouseManagement%" == "true" (
 	echo MixedVR-Manager is turning lighthouses v%lighthouseVersion% %desiredLighthouseState%...
+
+	rem remove "> nul" to see lighthouse-keeper.exe cmd output
 	if "%lighthouseVersion%" == "2.0" (
-		"%mixedVRManagerDirectory%lighthouse-keeper.exe" 2 %desiredLighthouseState% %lighthouseMACAddressList%
+		rem Run on background and let the script continue
+		START /b "lighthouse-keeper" /d "%mixedVRManagerDirectory%" lighthouse-keeper.exe 2 %desiredLighthouseState% %lighthouseMACAddressList% > nul
 	)
 	if "%lighthouseVersion%" == "1.0" (
-		"%mixedVRManagerDirectory%lighthouse-keeper.exe" 1 %desiredLighthouseState% %lighthouseMACAddressList%
+		rem Run on background and let the script continue
+		START /b "lighthouse-keeper" /d "%mixedVRManagerDirectory%" lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
 	)
 ) else (
 	echo MixedVR-Manager is skipping changing state of the lighthouses to %desiredLighthouseState%, per user's configuration
 	if "%steamvrStatus%" == "running" (
-		:: we have to wait some time though for SteamVR to launch
-		:: otherwise we try killing it before it has started, which ends up with us having never
-		:: restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
-		:: TODO: could improve this by doing the same waiting method we do for room setup, since it might take longer than
-		:: x seconds for SteamVR to start up on some people's machines. If we do this method, we should take it out of this
-		:: if statement and just apply it to all users, not just those not using lighthouses
+		rem we have to wait some time though for SteamVR to launch
+		rem otherwise we try killing it before it has started, which ends up with us having never
+		rem restarted it. The symptom for this is SteamVR is unable to detect the HMD even though it's enabled.
+		rem TODO could improve this by doing the same waiting method we do for room setup, since it might take longer than
+		rem x seconds for SteamVR to start up on some people's machines. If we do this method, we should take it out of this
+		rem if statement and just apply it to all users, not just those not using lighthouses
 		echo Waiting %maxLaunchTimeForSteamVR% seconds for SteamVR to launch...
 		timeout %maxLaunchTimeForSteamVR% >NUL
 	)
 )
 
+
+
 :: restore SteamVR home state (if the user has added SAVE files)
 if exist "%mixedVRManagerDirectory%..\userdata\SAVE\save_game_steamvr_home.sav" (
 	echo MixedVR-Manager is overwriting the existing SteamVR Home layout with the user specified SteamVR Home...
-	:: TODO bug: now that we're absolute pathing, this just straight up isn't working when there's a space in the name
-	:: need to figure it out, originally this was just: for %%f in userdata\SAVE\* do 
+	rem TODO bug: now that we're absolute pathing, this just straight up isn't working when there's a space in the name
+	rem need to figure it out, originally this was just: for %%f in userdata\SAVE\* do
 	for %%f in (%mixedVRManagerDirectory%..\userdata\SAVE\*) do (
 		xcopy /y %%f "%steamVRPath%\tools\steamvr_environments\game\steamtours\SAVE"
 	)
@@ -159,11 +181,11 @@ if "%steamvrStatus%" == "running" (
 	taskkill /f /im "OpenVR-SpaceCalibrator.exe" 2>NUL
 	start steam://launch/250820/VR
 	
-	:: wait until SteamVR Room Setup starts, then kill it. if it doesn't start after 
-	:: 90 seconds, assume it's never going to start, and just continue with the script's execution. 
-	:: this is only applicable to MixedVR users who are forcing the SteamVR chaperone bounds
-	:: note: this "delayed expansion" business really got me; apparently variables are 
-	:: evaluated before execution time unless you do this and then use ! instead of %. Craziness.
+	rem wait until SteamVR Room Setup starts, then kill it. if it doesn't start after
+	rem 90 seconds, assume it's never going to start, and just continue with the script's execution.
+	rem this is only applicable to MixedVR users who are forcing the SteamVR chaperone bounds
+	rem note: this "delayed expansion" business really got me; apparently variables are
+	rem evaluated before execution time unless you do this and then use ! instead of %. Craziness.
 	echo Waiting for SteamVR to start back up and to close Room Setup, will wait up to 90 seconds...
 	for /L %%i in (1,1,90) do (
 		tasklist /FI "IMAGENAME eq steamvr_room_setup.exe" 2>NUL | find /I /N "steamvr_room_setup.exe">NUL
@@ -175,15 +197,15 @@ if "%steamvrStatus%" == "running" (
 			timeout 1 >NUL
 		)
 
-		:: although not likely during real use sessions, it's possible that SteamVR is quit or crashes 
-		:: before SteamVR Room setup is launched, or for non-MixedVR users, room setup will never launch
-		:: therefore we allow an early exit from this 90 second loop if we detect that SteamVR has actually
-		:: been quit already, allowing us to do the setup procedure now, rather than after 90 seconds, which is 
-		:: a huge difference. Note that we have to wait for SteamVR to actually launch first
-		:: TODO we could do this better, by checking to see if it has opened and then closed, but instead 
-		:: we're just going to wait x seconds no matter what. This could end up being an issue soon, if a lot of 
-		:: people have machines that can't launch SteamVR in that sensible default. In that cause, we should detect 
-		:: when it opens and then closes
+		rem although not likely during real use sessions, it's possible that SteamVR is quit or crashes
+		rem before SteamVR Room setup is launched, or for non-MixedVR users, room setup will never launch
+		rem therefore we allow an early exit from this 90 second loop if we detect that SteamVR has actually
+		rem been quit already, allowing us to do the setup procedure now, rather than after 90 seconds, which is
+		rem a huge difference. Note that we have to wait for SteamVR to actually launch first
+		rem TODO we could do this better, by checking to see if it has opened and then closed, but instead
+		rem we're just going to wait x seconds no matter what. This could end up being an issue soon, if a lot of
+		rem people have machines that can't launch SteamVR in that sensible default. In that cause, we should detect
+		rem when it opens and then closes
 		if %%i geq %maxLaunchTimeForSteamVR% (
 			tasklist /FI "IMAGENAME eq vrserver.exe" 2>NUL | find /I /N "vrserver.exe">NUL
 			if "!ERRORLEVEL!"=="0" (set steamvrWaitingStatus=running) else (set steamvrWaitingStatus=quit)

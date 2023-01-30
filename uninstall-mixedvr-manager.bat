@@ -25,6 +25,13 @@ schtasks /Delete /TN "VR\Mixed VR Manager" /F
 echo MixedVR-Manager is changing state of USB device, the HMD, to /enable just in case it was off...
 "%MixedVRManagerFolder%bin\USBDeview.exe" /RunAsAdmin /enable "HoloLens Sensors"
 
+:: Undo disable of HTC Vive HMD USB
+:: HTC VIVE 			0bb4;2c87
+:: Lighthouse FPGA RX 	28de;2000
+echo MixedVR-Manager is changing state of HTC Vive HMD USB devices to enable in case option was used
+"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /enable_by_pid 0bb4;2c87
+"%mixedVRManagerDirectory%USBDeview.exe" /RunAsAdmin /enable_by_pid 28de;2000
+
 echo *******************************************************************
 echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
 echo *******************************************************************
@@ -36,6 +43,4 @@ echo * Send a screenshot of the output to /u/monstermac77 on Reddit, or post it 
 echo *******************************************************************
 echo *****PLEASE READ***********PLEASE READ**********PLEASE READ********
 echo *******************************************************************
-
 timeout 60 >NUL
-
