@@ -135,7 +135,7 @@ if "%allowLighthouseManagement%" == "true" (
 	)
 	if "%lighthouseVersion%" == "1.0" (
 		rem Run on background and let the script continue
-		START /b "lighthouse-keeper" /d "%mixedVRManagerDirectory%" lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList%
+		START /b "lighthouse-keeper" /d "%mixedVRManagerDirectory%" lighthouse-keeper.exe 1 %desiredLighthouseState% %lighthouseMACAddressList% > nul
 	)
 ) else (
 	echo MixedVR-Manager is skipping changing state of the lighthouses to %desiredLighthouseState%, per user's configuration
