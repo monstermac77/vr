@@ -12,6 +12,12 @@ set allowLighthouseManagement=true
 :: if you don't want your HMD to be disabled, set this to false
 set allowHMDManagement=true
 
+:: Option to disable HTC Vive HMD and only use Watchman USB dongles from it as tracker receivers
+:: SteamVR will not detect HTC Vive HDM when this is set to true and other 3rd party HMD can be used
+:: For example Pico 4 with vr desktop
+:: Make sure your HMD is connected whem steamvr is launched
+set disableHTCViveHMD=false
+
 :: specify the MAC addresses of your lighthouses (a.k.a basestations) here, separated by a space
 :: There are two ways to find the MAC addresses: 
 :: * a) download the "Lighthouse Power Management" app (Android only)
